@@ -31,6 +31,7 @@ dist-ssr
 *.sln
 *.sw?
 .yarn
+hackathon-frontend-build.zip
 
 # iconify dist files
 src/plugins/iconify/icons.css

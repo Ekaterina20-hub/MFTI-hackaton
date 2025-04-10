@@ -10,5 +10,5 @@ django-environ
 pillow
 easy-thumbnails
 # django-modeladmin-reorder
-django-allauth
+# django-allauth
 # django-rest-allauth
