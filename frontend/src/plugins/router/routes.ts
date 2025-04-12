@@ -21,6 +21,10 @@ export const routes = [
         component: () => import('@/pages/analyzes/cohort.vue'),
       },
       {
+        path: 'analyzes/nlp',
+        component: () => import('@/pages/analyzes/nlp.vue'),
+      },
+      {
         path: 'analyzes/cluster',
         component: () => import('@/pages/analyzes/cluster.vue'),
       },

@@ -98,6 +98,13 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       to: '/analyzes/cluster',
     }"
   />
+  <VerticalNavLink
+    :item="{
+      title: 'NLP Отзывы',
+      icon: 'ri-megaphone-line',
+      to: '/analyzes/nlp',
+    }"
+  />
   <VerticalNavSectionTitle
     :item="{
       heading: 'ML Модели',
