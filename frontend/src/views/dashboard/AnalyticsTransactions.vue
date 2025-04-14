@@ -56,73 +56,13 @@ const abcxyz = [
 </script>
 
 <template>
-  <VCard title="ABC + XYZ (кросс-анализ)">
-    <!-- <template #subtitle>
-      <p class="text-body-1 mb-0">
-        <span class="d-inline-block font-weight-medium text-high-emphasis">Total 48.5% Growth</span> <span class="text-high-emphasis">😎</span> this month
-      </p>
-    </template> -->
+  <VCard color="d-flex flex-column" style="height: 500px; display: flex;">
+    <VCardItem>
+      <VCardTitle>Кластерный анализ</VCardTitle>
+    </VCardItem>
 
-    <template #append>
-      <MoreBtn :menu-list="moreList" />
-    </template>
-
-    <VCardText class="pt-0">
-
-      <div class="d-flex">
-        <div>
-          <div v-for="ggg in abcxyz" class="d-flex">
-            <VAvatar v-for="item in ggg"
-              :color="item.color"
-              rounded
-              size="40"
-              class="elevation-2"
-              style="margin: 1px;"
-            >
-              {{ item.value }}
-            </VAvatar>
-
-          </div>
-        </div>
-        <div class="px-2">
-          <p class="text-body-1 mb-0">
-            <span class="d-inline-block font-weight-medium text-high-emphasis">Тут как-то показать результаты</span>
-          </p>
-        </div>
-      </div>
-
-      <VRow v-if="false">
-        <VCol
-          v-for="item in statistics"
-          :key="item.title"
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <div class="d-flex align-center gap-x-3">
-            <VAvatar
-              :color="item.color"
-              rounded
-              size="40"
-              class="elevation-2"
-            >
-              <VIcon
-                size="24"
-                :icon="item.icon"
-              />
-            </VAvatar>
-
-            <div class="d-flex flex-column">
-              <div class="text-body-1">
-                {{ item.title }}
-              </div>
-              <h5 class="text-h5">
-                {{ item.stats }}
-              </h5>
-            </div>
-          </div>
-        </VCol>
-      </VRow>
+    <VCardText style="flex: 1;">
+      <iframe style="height: 100%; width: 100%; border: none;" frameborder="0" src="/media/embedded/interactive_plot.html"></iframe>
     </VCardText>
   </VCard>
 </template>
