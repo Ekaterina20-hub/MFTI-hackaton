@@ -29,6 +29,28 @@ const newProject = {
 <template>
   <VRow class="match-height">
 
+    <VCol cols="12" md="12">
+      <VAlert color="success"
+        title="Что готово на 14.04.2025:"
+        icon="ri-alert-fill"
+        closable
+        variant="outlined"
+      >
+        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/geolocation">
+          <VListItemTitle>Анализ заказов по геолокации и другим параметрам</VListItemTitle>
+        </VListItem>
+        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/cohort">
+          <VListItemTitle>Всесторонний когортный анализ</VListItemTitle>
+        </VListItem>
+        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/nlp">
+          <VListItemTitle>Извлечение признаков из отзывов с помощью LLM</VListItemTitle>
+        </VListItem>
+        <VListItem prepend-icon="ri-chat-check-fill" to="/ml-models/time-machine">
+          <VListItemTitle>Первая версия нашей первой предсказательной модели</VListItemTitle>
+        </VListItem>
+      </VAlert>
+    </VCol>
+
     <VCol cols="12" md="6">
       <CustomerChurn />
     </VCol>
