@@ -20,31 +20,6 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
         to: '/',
       }"
     />
-
-  <!-- 👉 Apps & Pages -->
-  <VerticalNavSectionTitle
-    :item="{
-      heading: 'Реестры',
-    }"
-  />
-  <VerticalNavLink
-    :item="{
-      title: 'Клиенты',
-      icon: 'ri-user-line',
-      to: '/customers',
-      badgeContent: '-125',
-      badgeClass: 'bg-light-primary text-primary',
-    }"
-  />
-  <VerticalNavLink
-    :item="{
-      title: 'Товары',
-      icon: 'ri-shopping-cart-line',
-      to: '/products',
-      badgeContent: '+5',
-      badgeClass: 'bg-light-primary text-primary',
-    }"
-  />
   <!-- <VerticalNavLink
     :item="{
       title: 'Отзывы',
@@ -117,11 +92,36 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       to: '/ml-models/time-machine',
     }"
   />
-  <VerticalNavLink
+  <!-- <VerticalNavLink
     :item="{
       title: 'K-mean',
       icon: 'ri-shape-fill',
       to: '/ml-models/k-mean',
+    }"
+  /> -->
+
+  <!-- 👉 Apps & Pages -->
+  <VerticalNavSectionTitle
+    :item="{
+      heading: 'Реестры',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'Клиенты',
+      icon: 'ri-user-line',
+      to: '/customers',
+      badgeContent: '-125',
+      badgeClass: 'bg-light-primary text-primary',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'Товары',
+      icon: 'ri-shopping-cart-line',
+      to: '/products',
+      badgeContent: '+5',
+      badgeClass: 'bg-light-primary text-primary',
     }"
   />
 

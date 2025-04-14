@@ -27,7 +27,7 @@ import '@styles/notebooks/jupyter.css'
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D0%B3%D0%B5%D0%BE%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Анализ геолокационных данных<a class="anchor-link" href="#%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D0%B3%D0%B5%D0%BE%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">¶</a></h1><h2 id="1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">1. Введение<a class="anchor-link" href="#1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h2><p><strong>Цель исследования</strong>: Анализ географического распределения заказов, выявление региональных особенностей доставки и покупательского поведения.</p>
+<h2 id="1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">1. Введение<a class="anchor-link" href="#1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h2><p><strong>Цель исследования</strong>: Анализ географического распределения заказов, выявление региональных особенностей доставки и покупательского поведения.</p>
 <p><strong>Используемые данные</strong>:</p>
 <ul>
 <li>Очищенная таблица <code>geolocation</code></li>
