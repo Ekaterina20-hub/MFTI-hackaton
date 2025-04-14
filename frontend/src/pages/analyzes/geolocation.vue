@@ -25,7 +25,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-InputArea jp-Cell-inputArea"><div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">1. Введение<a class="anchor-link" href="#1.-%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h2><p><strong>Цель исследования</strong>: Анализ географического распределения заказов, выявление региональных особенностей доставки и покупательского поведения.</p>
 <p><strong>Используемые данные</strong>:</p>
@@ -100,7 +100,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -250,7 +250,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">folium</span>
@@ -374,7 +374,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-InputArea jp-Cell-inputArea"><div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li>Бросаются в глаза существенные различия между севером и югом</li>
@@ -387,7 +387,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">map1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'images/map1.html'</span><span class="p">)</span>
@@ -406,7 +406,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-InputArea jp-Cell-inputArea"><div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%D0%91%D0%BB%D0%B8%D0%B7%D0%BE%D1%81%D1%82%D1%8C-%D0%BA-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D1%83-%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0">Близость к центру города<a class="anchor-link" href="#%D0%91%D0%BB%D0%B8%D0%B7%D0%BE%D1%81%D1%82%D1%8C-%D0%BA-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D1%83-%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0">¶</a></h2><p>Используя координаты индексов, через которые клиеты привязаны к геолокации, мы можем примерно определить в какой части города проживает получатель заказа.
 В дальшейшем можем попробовать проверить, влияет ли близость к центру города на повторные заказы.</p>
@@ -418,7 +418,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Загрузим 10000 заказов из Sao Paulo</span>
@@ -510,7 +510,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Раскрасим градиентом в зависимости от близости к центру города. Близость к центру рассчитывалась отдельно в ноутбуке "5.3 Близость к центру города.ipynb"</span>
@@ -553,7 +553,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-InputArea jp-Cell-inputArea"><div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Есть ошибки, но в целом нам успешно удалось рассчитать близость к центру города для большинства заказов.</strong></p>
 </div>
@@ -564,7 +564,7 @@ import '@styles/notebooks/jupyter.css'
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-InputArea jp-Cell-inputArea"><div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="Близость заказов к центру города" :src="geolocationProximityMap"/></p>
 </div>
