@@ -48,8 +48,15 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   <VerticalNavLink
     :item="{
       title: 'ABC+XYZ',
-      icon: 'ri-bar-chart-2-fill',
+      icon: 'ri-bar-chart-2-line',
       to: '/analyzes/abc-xyz',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'RFM',
+      icon: 'ri-pie-chart-line',
+      to: '/analyzes/rfm',
     }"
   />
   <VerticalNavLink
@@ -80,6 +87,13 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       to: '/analyzes/nlp',
     }"
   />
+  <VerticalNavLink
+    :item="{
+      title: 'K-means + доп.',
+      icon: 'ri-shape-fill',
+      to: '/analyzes/k-means',
+    }"
+  />
   <VerticalNavSectionTitle
     :item="{
       heading: 'ML Модели',
@@ -92,13 +106,6 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       to: '/ml-models/time-machine',
     }"
   />
-  <!-- <VerticalNavLink
-    :item="{
-      title: 'K-mean',
-      icon: 'ri-shape-fill',
-      to: '/ml-models/k-mean',
-    }"
-  /> -->
 
   <!-- 👉 Apps & Pages -->
   <VerticalNavSectionTitle

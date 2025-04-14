@@ -36,27 +36,64 @@ const newProject = {
         closable
         variant="outlined"
       >
-        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/geolocation">
-          <VListItemTitle>Анализ заказов по геолокации и другим параметрам</VListItemTitle>
-        </VListItem>
-        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/cohort">
-          <VListItemTitle>Всесторонний когортный анализ</VListItemTitle>
-        </VListItem>
-        <VListItem prepend-icon="ri-chat-check-fill" to="/analyzes/nlp">
-          <VListItemTitle>Извлечение признаков из отзывов с помощью LLM</VListItemTitle>
-        </VListItem>
-        <VListItem prepend-icon="ri-chat-check-fill" to="/ml-models/time-machine">
-          <VListItemTitle>Первая версия нашей первой предсказательной модели</VListItemTitle>
-        </VListItem>
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/abc-xyz"
+        >
+          ABC + XYZ анализы
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/rfm"
+          
+        >
+          RFM анализ
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/geolocation"
+        >
+          Анализ заказов по геолокации и другим параметрам
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/cohort"
+        >
+          Всесторонний когортный анализ
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/nlp"
+        >
+          Извлечение признаков из отзывов с помощью LLM
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/analyzes/k-means"
+        >
+          K means + доп.продажи
+        </VBtn>, 
+
+        <VBtn variant="text"
+          color="primary"
+          prepend-icon="ri-chat-check-fill"  
+          to="/ml-models/time-machine"
+        >
+          Первая версия нашей первой предсказательной модели
+        </VBtn>, 
+
       </VAlert>
-    </VCol>
-
-    <VCol cols="12" md="6">
-      <CustomerChurn />
-    </VCol>
-
-    <VCol cols="12" md="6">
-      <SalesForecast />
     </VCol>
 
 
@@ -84,5 +121,19 @@ const newProject = {
       <AnalyticsTransactions />
     </VCol>
 
+    <VCol cols="12" md="6">
+      <CustomerChurn />
+    </VCol>
+
+    <VCol cols="12" md="6">
+      <SalesForecast />
+    </VCol>
+
   </VRow>
 </template>
+
+<style>
+.v-btn {
+  text-transform: none;
+}
+</style>

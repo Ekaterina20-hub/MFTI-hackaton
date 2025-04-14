@@ -1,1 +1,0 @@
-<template>В разработке</template>

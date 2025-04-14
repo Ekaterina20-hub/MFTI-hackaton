@@ -13,6 +13,10 @@ export const routes = [
         component: () => import('@/pages/analyzes/abc-xyz.vue'),
       },
       {
+        path: 'analyzes/rfm',
+        component: () => import('@/pages/analyzes/rfm.vue'),
+      },
+      {
         path: 'analyzes/geolocation',
         component: () => import('@/pages/analyzes/geolocation.vue'),
       },
@@ -29,12 +33,12 @@ export const routes = [
         component: () => import('@/pages/analyzes/cluster.vue'),
       },
       {
-        path: 'ml-models/time-machine',
-        component: () => import('@/pages/ml-models/time-machine.vue'),
+        path: 'analyzes/k-means',
+        component: () => import('@/pages/analyzes/k-means.vue'),
       },
       {
-        path: 'ml-models/k-mean',
-        component: () => import('@/pages/ml-models/k-mean.vue'),
+        path: 'ml-models/time-machine',
+        component: () => import('@/pages/ml-models/time-machine.vue'),
       },
       {
         path: 'customers',
