@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import customerReturns from '@images/geolocation/customer-returns.png';
 import { hexToRgb } from '@layouts/utils';
 import { useTheme } from 'vuetify';
 
@@ -104,19 +103,19 @@ const moreList = [
 </script>
 
 <template>
-  <VCard>
+  <VCard color="d-flex flex-column" style="height: 500px; display: flex;">
     <VCardItem>
-      <VCardTitle>Возврат клиентов по штатам</VCardTitle>
+      <VCardTitle>Среднее число заказов на одного клиента</VCardTitle>
 
-      <template #append>
+      <!-- <template #append>
         <div class="me-n3">
           <MoreBtn :menu-list="moreList" />
         </div>
-      </template>
+      </template> -->
     </VCardItem>
 
-    <VCardText>
-      <VImg class="mt-4" :src="customerReturns" cover/>
+    <VCardText style="flex: 1;">
+      <iframe style="height: 100%; width: 100%; border: none;" frameborder="0" src="/media/embedded/avg_orders_per_customer.html"></iframe>
     </VCardText>
   </VCard>
 </template>
