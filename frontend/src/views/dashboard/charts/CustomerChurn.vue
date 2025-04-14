@@ -12,29 +12,29 @@ const labelColor = 'rgba(var(--v-theme-on-background), var(--v-medium-emphasis-o
 const borderColor = 'rgba(var(--v-border-color), var(--v-border-opacity))'
 
 const series = [
-{
-    name: 'Ушло итого',
+  {
+    name: 'Пример данных',
     type: 'column',
-    data: [2, 4, 11, 13, 17, 18, null, null, null, null],
+    data: [2, 4, 11, 13, 17, 18, 25, 30, 32, 37],
   },
   {
     name: 'Прогноз',
-    type: 'column',
-    data: [null, null, null, null, null, null, 25, 30, 32, 37],
+    type: 'line',
+    data: [23, 28, 23, 32, 25, 42, 25, 30, 32, 37],
     stroke: {
       dashArray: 5,
     },
   },
-  {
-    name: 'Уходящих %',
-    type: 'line',
-    data: [23, 28, 23, 32, 25, 42, null, null, null, null],
-  },
-  {
-    name: 'Прогноз %',
-    type: 'line',
-    data: [null, null, null, null, null, 42, 38, 32, 26, 24],
-  },
+  // {
+  //   name: 'Уходящих %',
+  //   type: 'line',
+  //   data: [23, 28, 23, 32, 25, 42, null, null, null, null],
+  // },
+  // {
+  //   name: 'Прогноз %',
+  //   type: 'line',
+  //   data: [null, null, null, null, null, 42, 38, 32, 26, 24],
+  // },
 ]
 
 const shipmentConfig = {
@@ -201,7 +201,7 @@ const shipmentConfig = {
   <VCard>
     <VCardItem
       title="Прогноз оттока клиентов"
-      subtitle="Ожидаемый отток в этом месяце: 3%"
+      subtitle="Ещё в разработке..."
     >
       <template #append>
         <VBtn
