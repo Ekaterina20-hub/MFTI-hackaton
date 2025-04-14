@@ -48,8 +48,7 @@ import '@styles/notebooks/jupyter.css';
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># 1. Загрузка данных</span>
     <span class="c1"># строки подключения SQLAlchemy</span>
-    <span class="c1"># db_string = f"postgresql://hakaton_admin:fyT6r5Kd94Nko4d@94.142.142.59:5432/hakaton_test_db"</span>
-    <span class="n">db_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"postgresql://anketa_admin:f4uh4uhu34fuy34fd@localhost:5432/hakaton2_db"</span>
+    <span class="n">db_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"postgresql://..."</span>
 
     <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_string</span><span class="p">)</span>
 
