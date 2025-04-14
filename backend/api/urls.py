@@ -16,5 +16,6 @@ router.register('products', views.SearchProductViewSet, basename='product')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('random/reviews', views.RandomReviewsListView.as_view(), name='list_random_reviews'),
     # path('icons-about/', views.IconAboutListView.as_view(), name='list_icons_about'),
 ]

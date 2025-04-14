@@ -47,3 +47,30 @@ class Product(models.Model):
         verbose_name_plural = 'Товары'
         db_table = 'products'
         managed = False
+
+
+class Review(models.Model):
+    review_id = models.UUIDField(primary_key=True)
+    order_id = models.UUIDField()
+    score = models.IntegerField()
+    message = models.CharField()
+    message_ru = models.CharField()
+    creation_date = models.DateField()
+    q1 = models.BooleanField()
+    q2 = models.IntegerField()
+    q3 = models.BooleanField()
+    q4 = models.BooleanField()
+    q5 = models.BooleanField()
+    q6 = models.IntegerField()
+    q7 = models.BooleanField()
+    q8 = models.BooleanField()
+    q9 = models.IntegerField()
+    q10 = models.BooleanField()
+    q11 = models.BooleanField()
+    customer_unique_id = models.UUIDField()
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        db_table = 'analysis_nlp_reviews'
+        managed = False

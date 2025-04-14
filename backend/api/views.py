@@ -8,6 +8,7 @@ from django.utils import timezone
 from rest_framework.viewsets import ModelViewSet, ViewSet
 from api.models import Customer
 from api.models import Product
+from api.models import Review
 from django.db.models import Q
 
 from api.paginators import StandardResultsSetPagination
@@ -68,3 +69,11 @@ class SearchProductViewSet(ModelViewSet):
         serializer = api_serializers.ProductSerializer(page, many=True)
 
         return self.get_paginated_response(serializer.data)
+
+
+class RandomReviewsListView(ListAPIView):
+    serializer_class = api_serializers.ReviewSerializer
+    def get_queryset(self):
+        sliсe_count = random.randint(0, 1000)
+        return Review.objects.filter(message_ru__isnull=False)[sliсe_count:5 + sliсe_count]
+        # return Review.objects.filter(message_ru__isnull=False, review_id='2c5e27fc-178b-de7a-c173-c9c62c31b070')

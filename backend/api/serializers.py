@@ -4,6 +4,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from api.models import Customer
 from api.models import Product
+from api.models import Review
 # from easy_thumbnails.files import get_thumbnailer
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -41,6 +42,41 @@ class ProductSerializer(serializers.ModelSerializer):
             'product_height_cm',
             'product_width_cm',
         )
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    
+    customer = serializers.SerializerMethodField(read_only=True)
+
+    def get_customer(self, obj):
+        # TODO: добавить нормальную связь по ключу
+        customer = Customer.objects.filter(customer_unique_id=obj.customer_unique_id).first()
+        return CustomerSerializer(customer, many=False).data
+
+    class Meta:
+        model = Review
+        fields = (
+            'review_id',
+            'order_id',
+            'score',
+            'message',
+            'message_ru',
+            'creation_date',
+            'q1',
+            'q2',
+            'q3',
+            'q4',
+            'q5',
+            'q6',
+            'q7',
+            'q8',
+            'q9',
+            'q10',
+            'q11',
+            'customer_unique_id',
+            'customer',
+        )
+
 
 
 # class CategorySerializer(serializers.ModelSerializer):
