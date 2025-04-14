@@ -1,33 +1,17 @@
 <script setup lang="ts">
+import cohort1 from '@images/cohort/cohort1.png';
+
 </script>
 
 <template>
-  <VCard class="position-relative">
-    <VCardText>
-      <div class="mb-2">
-        <h5 class="text-h5">
-          Результаты анализа
-        </h5>
-        <div class="text-body-1">
-          То что можно кратко описать
-        </div>
-      </div>
-      <!-- <h4 class="text-h4 text-primary">
-        $42.8k
-      </h4>
-      <div class="text-body-1 mb-2">
-        78% of target <span class="text-high-emphasis">🚀</span>
-      </div>
-      <VBtn size="small">
-        View Sales
-      </VBtn> -->
+  <VCard class="position-relative" title="Когортный анализ">
+    <VCardText style="flex: 1;">
+      <VImg
+        :src="cohort1"
+      />
     </VCardText>
 
     <!-- Trophy -->
-    <!-- <VImg
-      :src="trophy"
-      class="trophy"
-    /> -->
   </VCard>
 </template>
 
