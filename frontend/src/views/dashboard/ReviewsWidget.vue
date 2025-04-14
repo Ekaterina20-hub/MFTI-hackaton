@@ -100,12 +100,12 @@ onMounted(() => loadData())
           </VListItemSubtitle>
           <VListItemSubtitle>
             <span v-if="review.q2 != 0 && review.q2 !== null" class="mr-2" :class="review.q2 > 0 ? 'text-success' : 'text-error'">
-              Состояние:
+              Состояние товара:
               <VIcon v-if="review.q2 > 0" icon="ri-thumb-up-line" style="" size="14"></VIcon>
               <VIcon v-else icon="ri-thumb-down-line" style="" size="14"></VIcon>
             </span>
             <span v-if="review.q6 !== 0" class="mr-2" :class="review.q6 > 0 ? 'text-success' : 'text-error'">
-              Настроение:
+              Настроение покупателя:
               <VIcon v-if="review.q6 > 0 && review.q6 !== null" icon="ri-thumb-up-line" style="" size="14"></VIcon>
               <VIcon v-else icon="ri-thumb-down-line" style="" size="14"></VIcon>
             </span>
