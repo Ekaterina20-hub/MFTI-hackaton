@@ -9,6 +9,8 @@ from rest_framework.viewsets import ModelViewSet, ViewSet
 from api.models import Customer
 from api.models import Product
 from api.models import Review
+from api.models import MLModel
+from api.models import CustomerFeaturesCurrent
 from django.db.models import Q
 
 from api.paginators import StandardResultsSetPagination
@@ -43,13 +45,16 @@ class SearchCustomerViewSet(ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def list(self, request, *args, **kwargs):
-        queryset = Customer.objects.all()
-
-        # get_service_id = request.GET.get('get_service', None)
         
-        # if profile_id:
-        #     profile = Profile.objects.get(id = profile_id)
-        #     queryset = queryset.filter(user__profile = profile)
+        threshold = request.GET.get('threshold', None)
+
+        queryset = Customer.objects.all()
+        if threshold:
+            unique_ids = (CustomerFeaturesCurrent.objects
+                .filter(pred_proba__gte=threshold)
+                .values_list('customer_unique_id', flat=True)
+                .distinct())
+            queryset = queryset.filter(customer_unique_id__in=unique_ids)
 
         page = self.paginate_queryset(queryset)
         serializer = api_serializers.CustomerSerializer(page, many=True)
@@ -77,3 +82,25 @@ class RandomReviewsListView(ListAPIView):
         sliсe_count = random.randint(0, 1000)
         return Review.objects.filter(message_ru__isnull=False)[sliсe_count:5 + sliсe_count]
         # return Review.objects.filter(message_ru__isnull=False, review_id='2c5e27fc-178b-de7a-c173-c9c62c31b070')
+
+
+class MLModelListView(ListAPIView):
+    serializer_class = api_serializers.MLModelSerializer
+    queryset = MLModel.objects.all()
+
+
+@api_view(('GET',))
+@permission_classes((AllowAny,))
+def getCustomersCount(request):
+
+    threshold = request.GET.get('threshold', 0.5)
+    # count = CustomerFeaturesCurrent.objects.filter(pred_proba__gte=threshold).count()
+    unique_ids = (CustomerFeaturesCurrent.objects
+              .filter(pred_proba__gte=threshold)
+              .values_list('customer_unique_id', flat=True)
+              .distinct())
+    count = len(unique_ids)
+    
+    return Response({
+        'count': count,
+    }, status=HTTP_200_OK)

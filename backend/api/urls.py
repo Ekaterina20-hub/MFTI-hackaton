@@ -1,12 +1,6 @@
 from django.urls import path, include
 from api import views
-# from accounts import views as account_views
-# from referrals import views as referrals_views
-# from partners import views as partners_views
-# from core import views as core_views
 from rest_framework.routers import DefaultRouter
-# from general import views as general_views
-# from home import views as home_views
 
 app_name = 'api'
 
@@ -17,5 +11,6 @@ router.register('products', views.SearchProductViewSet, basename='product')
 urlpatterns = [
     path('', include(router.urls)),
     path('random/reviews', views.RandomReviewsListView.as_view(), name='list_random_reviews'),
-    # path('icons-about/', views.IconAboutListView.as_view(), name='list_icons_about'),
+    path('ml-models/list', views.MLModelListView.as_view(), name='list_ml-models'),
+    path('ml-models/customers/count', views.getCustomersCount, name='ml-models-customers-count'),
 ]

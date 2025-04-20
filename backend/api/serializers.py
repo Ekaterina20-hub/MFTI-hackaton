@@ -5,6 +5,7 @@ from rest_framework.exceptions import ValidationError
 from api.models import Customer
 from api.models import Product
 from api.models import Review
+from api.models import MLModel
 # from easy_thumbnails.files import get_thumbnailer
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -78,31 +79,27 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
 
 
+class MLModelSerializer(serializers.ModelSerializer):
+    
+    metrics_offset = serializers.SerializerMethodField(read_only=True)
 
-# class CategorySerializer(serializers.ModelSerializer):
+    def get_metrics_offset(self, obj):
+        return obj.metrics_offset_json
 
-#     micon = serializers.SerializerMethodField(read_only=True)
-#     childrens = serializers.SerializerMethodField(read_only=True)
-
-#     def get_childrens(self, obj):
-#         categories = Category.objects.filter(parent=obj)
-#         serializers = CategorySerializer(categories, many=True)
-#         return serializers.data
-
-#     def get_micon(self, obj):
-#         crop_options = {'size': (32, 32), 'crop': True}
-#         try:
-#             return get_thumbnailer(obj.icon).get_thumbnail(crop_options).url
-#         except Exception as e:
-#             pass
-
-#     class Meta:
-#         model = Category
-#         fields = (
-#             'id',
-#             'title',
-#             'icon',
-#             'micon',
-#             'childrens',
-#         )
+    class Meta:
+        model = MLModel
+        fields = (
+            'name',
+            'model_file',
+            'feature_columns',
+            # 'mean_values_json',
+            # 'metrics_offset_json',
+            'metrics_offset',
+            'precision_true',
+            'recall_true',
+            'f1_true',
+            'precision_false',
+            'is_active',
+            'is_main',
+        )
 
