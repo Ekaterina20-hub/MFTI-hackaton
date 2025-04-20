@@ -40,9 +40,13 @@ from rest_framework.status import (
 
 
 class SearchCustomerViewSet(ModelViewSet):
-    serializer_class = api_serializers.CustomerSerializer
+    # serializer_class = api_serializers.CustomerSerializer
     queryset = Customer.objects.all()
     pagination_class = StandardResultsSetPagination
+    def get_serializer_class(self):
+        if self.request.method == 'GET' and 'pk' in self.kwargs:
+            return api_serializers.CustomerDetailSerializer
+        return api_serializers.CustomerSerializer
 
     def list(self, request, *args, **kwargs):
         
@@ -56,6 +60,7 @@ class SearchCustomerViewSet(ModelViewSet):
                 .distinct())
             queryset = queryset.filter(customer_unique_id__in=unique_ids)
 
+        queryset = queryset.order_by('-orders_total')
         page = self.paginate_queryset(queryset)
         serializer = api_serializers.CustomerSerializer(page, many=True)
 

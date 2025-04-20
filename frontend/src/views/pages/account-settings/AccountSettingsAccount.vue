@@ -1,5 +1,14 @@
 <script lang="ts" setup>
+import AbcAnalysisCard from '@/components/analyzes/AbcAnalysisCard.vue';
+import ProductsTable from '@/views/customers/ProductsTable.vue';
 import avatar1 from '@images/avatars/avatar-1.png';
+
+const $props = defineProps({
+  customerProfile: {
+    type: Object,
+    default: null
+  }
+})
 
 const accountData = {
   avatarImg: avatar1,
@@ -107,7 +116,17 @@ const currencies = [
   <VRow>
     <VCol cols="12">
       <VCard title="Информация о клиенте">
-        <VCardText class="d-flex">
+        <v-progress-linear
+          :active="!customerProfile"
+          :indeterminate="!customerProfile"
+          color="primary"
+          absolute
+          bottom
+          :height="3"
+        ></v-progress-linear>
+
+        <VCardText v-if="customerProfile" class="d-flex">
+
           <div class="d-flex mr-auto">
             <!-- 👉 Avatar -->
             <VAvatar
@@ -119,221 +138,41 @@ const currencies = [
 
             <!-- 👉 Upload Photo -->
             <div class="d-flex flex-column justify-center gap-1">
-              <h3 class="h3 mb-0">Джеймс Хэтфилд</h3>
+              <h3 class="h3 mb-0">
+                {{ customerProfile.fullname }}
+                <sup class="text-sm text-disabled">Имя генерируется случайно</sup>
+              </h3>
 
               <p class="text-body-1 mb-0">
-                013b0835-2586-8a04-3765-2ebf071cda03
+                {{ customerProfile.customer_unique_id }}
               </p>
-              <p class="text-error">
-                Клиент потерян 86%
+              <p class="text-primary">
+                Последняя активность: {{ customerProfile.last_activity }}
               </p>
             </div>
           </div>
           <div>
-            <VChip color="success">Всего заказов: 1</VChip>
+            <VChip color="success">Всего заказов: {{ customerProfile.orders_total }}</VChip>
           </div>
           </VCardText>
 
         <VDivider />
 
-        <VCardTitle class="mt-4">
+        <VCardTitle v-if="customerProfile" class="mt-4">
           Основные параметры:
         </VCardTitle>
-        <VCardText>
-          <!-- 👉 Form -->
-          <VForm class="mt-6">
-            <VRow>
-              <!-- 👉 First Name -->
-              <VCol
-                md="6"
-                cols="12"
-              >
-                <VTextField
-                  v-model="accountDataLocal.firstName"
-                  placeholder="John"
-                  label="First Name"
-                />
-              </VCol>
+        <VCardText v-if="customerProfile">
 
-              <!-- 👉 Last Name -->
-              <VCol
-                md="6"
-                cols="12"
-              >
-                <VTextField
-                  v-model="accountDataLocal.lastName"
-                  placeholder="Doe"
-                  label="Last Name"
-                />
-              </VCol>
+          <AbcAnalysisCard :abc-analysis="customerProfile.abc_analysis" />
 
-              <!-- 👉 Email -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.email"
-                  label="E-mail"
-                  placeholder="johndoe@gmail.com"
-                  type="email"
-                />
-              </VCol>
+          <h4 class="h4 mt-4 mb-2">Купленные товары:</h4>
 
-              <!-- 👉 Organization -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.org"
-                  label="Organization"
-                  placeholder="ThemeSelection"
-                />
-              </VCol>
+          <ProductsTable 
+            :current-page="1"
+            :services-data="customerProfile.products"
+            :is-loading="false"
+          />
 
-              <!-- 👉 Phone -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.phone"
-                  label="Phone Number"
-                  placeholder="+1 (917) 543-9876"
-                />
-              </VCol>
-
-              <!-- 👉 Address -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.address"
-                  label="Address"
-                  placeholder="123 Main St, New York, NY 10001"
-                />
-              </VCol>
-
-              <!-- 👉 State -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.state"
-                  label="State"
-                  placeholder="New York"
-                />
-              </VCol>
-
-              <!-- 👉 Zip Code -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VTextField
-                  v-model="accountDataLocal.zip"
-                  label="Zip Code"
-                  placeholder="10001"
-                />
-              </VCol>
-
-              <!-- 👉 Country -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VSelect
-                  v-model="accountDataLocal.country"
-                  label="Country"
-                  :items="['USA', 'Canada', 'UK', 'India', 'Australia']"
-                  placeholder="Select Country"
-                />
-              </VCol>
-
-              <!-- 👉 Language -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VSelect
-                  v-model="accountDataLocal.language"
-                  label="Language"
-                  placeholder="Select Language"
-                  :items="['English', 'Spanish', 'Arabic', 'Hindi', 'Urdu']"
-                />
-              </VCol>
-
-              <!-- 👉 Timezone -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VSelect
-                  v-model="accountDataLocal.timezone"
-                  label="Timezone"
-                  placeholder="Select Timezone"
-                  :items="timezones"
-                  :menu-props="{ maxHeight: 200 }"
-                />
-              </VCol>
-
-              <!-- 👉 Currency -->
-              <VCol
-                cols="12"
-                md="6"
-              >
-                <VSelect
-                  v-model="accountDataLocal.currency"
-                  label="Currency"
-                  placeholder="Select Currency"
-                  :items="currencies"
-                  :menu-props="{ maxHeight: 200 }"
-                />
-              </VCol>
-
-              <!-- 👉 Form Actions -->
-              <VCol
-                cols="12"
-                class="d-flex flex-wrap gap-4"
-              >
-                <VBtn>Save changes</VBtn>
-
-                <VBtn
-                  color="secondary"
-                  variant="outlined"
-                  type="reset"
-                  @click.prevent="resetForm"
-                >
-                  Reset
-                </VBtn>
-              </VCol>
-            </VRow>
-          </VForm>
-        </VCardText>
-      </VCard>
-    </VCol>
-
-    <VCol cols="12">
-      <!-- 👉 Deactivate Account -->
-      <VCard title="Deactivate Account">
-        <VCardText>
-          <div>
-            <VCheckbox
-              v-model="isAccountDeactivated"
-              label="I confirm my account deactivation"
-            />
-          </div>
-
-          <VBtn
-            :disabled="!isAccountDeactivated"
-            color="error"
-            class="mt-3"
-          >
-            Deactivate Account
-          </VBtn>
         </VCardText>
       </VCard>
     </VCol>

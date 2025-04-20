@@ -6,6 +6,8 @@ from api.models import Customer
 from api.models import Product
 from api.models import Review
 from api.models import MLModel
+from api.models import CustomerAbcAnalysis
+from hackathon.sources_db import runQuery
 # from easy_thumbnails.files import get_thumbnailer
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -27,6 +29,45 @@ class CustomerSerializer(serializers.ModelSerializer):
             'orders_total',
             'last_activity'
         )
+
+
+class CustomerAbcAnalysisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerAbcAnalysis
+        fields = (
+            'customer_unique_id',
+            'sum',
+            'cumulative_revenue',
+            'cumulative_percentage',
+            'category'
+        )
+
+
+class CustomerDetailSerializer(CustomerSerializer):
+    abc_analysis = serializers.SerializerMethodField(read_only=True)
+    products = serializers.SerializerMethodField(read_only=True)
+    
+    def get_abc_analysis(self, obj):
+        abc = CustomerAbcAnalysis.objects.filter(customer_unique_id=obj.customer_unique_id.hex).first()
+        return CustomerAbcAnalysisSerializer(abc, many=False).data
+    
+    def get_products(self, obj):
+        products_dict = runQuery(f'''
+select oi.product_id from orders_items_clear oi 
+left join orders o on o.order_id = oi.order_id
+left join customers c on c.customer_id = o.customer_id
+where c.customer_unique_id='{obj.customer_unique_id.hex}'
+''')
+        product_ids = [p['product_id'] for p in products_dict]
+        products = Product.objects.filter(product_id__in = product_ids).all()
+        return ProductSerializer(products, many=True).data
+
+    class Meta(CustomerSerializer.Meta):
+        fields = CustomerSerializer.Meta.fields + (
+            'abc_analysis',
+            'products',
+        )
+
 
 class ProductSerializer(serializers.ModelSerializer):
     

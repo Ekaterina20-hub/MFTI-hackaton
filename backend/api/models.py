@@ -35,7 +35,8 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
-    product_id = models.UUIDField(primary_key=True)
+    # product_id = models.UUIDField(primary_key=True)
+    product_id = models.CharField(primary_key=True)
     product_category_name = models.CharField(max_length=250)
     product_name_lenght = models.IntegerField()
     product_description_lenght = models.IntegerField()
@@ -183,3 +184,31 @@ class CustomerFeaturesCurrent(models.Model):
         verbose_name_plural = 'Параметры прогнозирования'
         db_table = 'customer_features_current'
         managed = False
+
+class CustomerAbcAnalysis(models.Model):
+    customer_unique_id = models.CharField(
+        max_length=255, 
+        primary_key=True,  # Указываем что это PK вместо стандартного id
+        db_column='customer_unique_id'
+    )
+    sum = models.DecimalField(max_digits=12, decimal_places=2)
+    cumulative_revenue = models.DecimalField(
+        max_digits=12, 
+        decimal_places=2,
+        db_column='"Cumulative revenue"'
+    )
+    cumulative_percentage = models.DecimalField(
+        max_digits=9,
+        decimal_places=7,
+        db_column='"Cumulative percentage"'
+    )
+    category = models.CharField(
+        max_length=1,
+        db_column='"Category"'
+    )
+    class Meta:
+        verbose_name = 'ABC анализ'
+        verbose_name_plural = 'ABC анализы'
+        db_table = 'analysis_abc_customer_payment_value'
+        managed = False
+
