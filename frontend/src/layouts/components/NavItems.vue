@@ -27,26 +27,27 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
         to: '/analyzes/datalens/general',
       }"
     />
-  <!-- <VerticalNavLink
-    :item="{
-      title: 'Отзывы',
-      icon: 'ri-chat-1-line',
-      href: 'https://demos.themeselection.com/materio-vuetify-vuejs-admin-template/demo-1/apps/calendar',
-      target: '_blank',
-      badgeContent: '2',
-      badgeClass: 'bg-success',
-    }"
-  />
-  <VerticalNavLink
-    :item="{
-      title: 'Доставка',
-      icon: 'ri-truck-line',
-      href: 'https://demos.themeselection.com/materio-vuetify-vuejs-admin-template/demo-1/apps/kanban',
-      target: '_blank',
-      badgeContent: '5',
-      badgeClass: 'bg-error',
-    }"
-  /> -->
+    <VerticalNavSectionTitle
+      :item="{
+        heading: 'ML Модели',
+      }"
+    />
+    <VerticalNavLink
+      :item="{
+        title: 'Машина времени',
+        icon: 'ri-calendar-schedule-fill',
+        to: '/ml-models/time-machine',
+      }"
+    />
+    <VerticalNavLink
+      :item="{
+        title: 'Клиенты',
+        icon: 'ri-user-line',
+        to: '/customers',
+        badgeContent: '-125',
+        badgeClass: 'bg-light-primary text-primary',
+      }"
+    />
   <VerticalNavSectionTitle
     :item="{
       heading: 'Анализы',
@@ -115,32 +116,11 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       to: '/analyzes/k-means',
     }"
   />
-  <VerticalNavSectionTitle
-    :item="{
-      heading: 'ML Модели',
-    }"
-  />
-  <VerticalNavLink
-    :item="{
-      title: 'Машина времени',
-      icon: 'ri-calendar-schedule-fill',
-      to: '/ml-models/time-machine',
-    }"
-  />
 
   <!-- 👉 Apps & Pages -->
   <VerticalNavSectionTitle
     :item="{
       heading: 'Реестры',
-    }"
-  />
-  <VerticalNavLink
-    :item="{
-      title: 'Клиенты',
-      icon: 'ri-user-line',
-      to: '/customers',
-      badgeContent: '-125',
-      badgeClass: 'bg-light-primary text-primary',
     }"
   />
   <VerticalNavLink

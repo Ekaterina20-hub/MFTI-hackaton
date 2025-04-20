@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
   import { useApi } from '@/composables/useApi';
-// import serviceEmpty from '@images/services/service-empty.jpg';
+import LoyaltyFilterDialog from '@/views/customers/LoyaltyFilterDialog.vue';
 
   import avatar1 from '@images/avatars/avatar-1.png';
 import avatar2 from '@images/avatars/avatar-2.png';
@@ -11,7 +11,6 @@ import avatar5 from '@images/avatars/avatar-5.png';
 import avatar6 from '@images/avatars/avatar-6.png';
 import avatar7 from '@images/avatars/avatar-7.png';
 import avatar8 from '@images/avatars/avatar-8.png';
-import avatar9 from '@images/avatars/avatar-9.png';
 
   const $api = useApi()
   const isLoading = ref(true)
@@ -20,6 +19,10 @@ import avatar9 from '@images/avatars/avatar-9.png';
   const totalData = ref<any|null>(null)
   const totalPagesCount = ref(0)
   const currentPage = ref(1)
+  const MLModels = ref<Array<any>|null>(null)
+  const mainMLModel = ref<any|null>(null)
+  const metricaFilter = ref<any|null>(null)
+  const loyaltyFilterDialog = ref<typeof LoyaltyFilterDialog|null>(null)
 
   const headers = [
     { title: 'Клиент', key: 'customer_unique_id' },
@@ -35,6 +38,10 @@ import avatar9 from '@images/avatars/avatar-9.png';
     }
     isLoading.value = true
     let url = '/api/customers/?page=' + currentPage.value
+    console.log('metricaFilter.value', metricaFilter.value)
+    if (metricaFilter.value) {
+      url += '&threshold=' + metricaFilter.value.threshold
+    }
     $api.get(url)
       .then(response => {
         totalData.value = response.data
@@ -46,10 +53,15 @@ import avatar9 from '@images/avatars/avatar-9.png';
         totalPagesCount.value = response.data.total_pages
         isLoading.value = false
       })
+    $api.get('/api/ml-models/list')
+      .then(response => {
+        MLModels.value = response.data
+        mainMLModel.value = MLModels.value?.find(x => x.is_main)
+      })
   }
 
   const getRundomPhoto = () => {
-    const photos = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8, avatar9]
+    const photos = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8]
     return photos[Math.floor(Math.random() * photos.length)]
   }
 
@@ -60,6 +72,12 @@ import avatar9 from '@images/avatars/avatar-9.png';
   const gotoPage = (pageNumber: number) => {
     currentPage.value = pageNumber
     loadData(false)
+  }
+
+  const openFilterDialog = () => {
+    loyaltyFilterDialog.value?.open(
+      metricaFilter.value ? metricaFilter.value.recall : null
+    )
   }
 
   onMounted(() => {
@@ -77,10 +95,15 @@ import avatar9 from '@images/avatars/avatar-9.png';
       <div class="d-flex gap-4 flex-wrap align-center">
 
         <VBtn
-          color="primary"
-          prepend-icon="ri-add-line"
+          :color="metricaFilter ? 'success' : 'primary'"
+          prepend-icon="ri-search-line"
+          :disabled="!mainMLModel"
+          :loading="!mainMLModel"
+          @click="openFilterDialog"
         >
-          Новый клиент / Предсказание
+          {{ metricaFilter 
+            ? `Лояльность: массовость: ${metricaFilter.recall}%, точность: ${metricaFilter.precision}%` 
+            : 'Фильтрация по уровню лояльности' }}
         </VBtn>
       </div>
     </div>
@@ -132,11 +155,7 @@ import avatar9 from '@images/avatars/avatar-9.png';
         </div>
       </template>
 
-      <!-- Actions -->
       <template #item.actions="{ item }">
-        <!-- <IconBtn>
-          <VIcon icon="ri-edit-2-fill" :to="'/account/service/' + item.id" />
-        </IconBtn> -->
         <VBtn  icon="ri-edit-2-fill" :to="'/customers/' + item.id" variant="plain" />
       </template>
       <template #bottom>
@@ -154,4 +173,9 @@ import avatar9 from '@images/avatars/avatar-9.png';
 
   </VCard>
 
+  <LoyaltyFilterDialog v-if="mainMLModel"
+    ref="loyaltyFilterDialog"
+    :main-m-l-model="mainMLModel"
+    @update-search="metricaFilter = $event; loadData()"
+  />
 </template>
