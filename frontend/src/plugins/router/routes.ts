@@ -25,8 +25,16 @@ export const routes = [
         component: () => import('@/pages/analyzes/datalens/abc.vue'),
       },
       {
+        path: 'analyzes/datalens/abc-xyz',
+        component: () => import('@/pages/analyzes/datalens/abc-xyz.vue'),
+      },
+      {
         path: 'analyzes/rfm',
         component: () => import('@/pages/analyzes/rfm.vue'),
+      },
+      {
+        path: 'analyzes/datalens/rfm',
+        component: () => import('@/pages/analyzes/datalens/rfm.vue'),
       },
       {
         path: 'analyzes/geolocation',

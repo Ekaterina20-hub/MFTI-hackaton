@@ -76,9 +76,23 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   />
   <VerticalNavLink
     :item="{
+      title: 'DataLens ABCXYZ',
+      icon: 'ri-bar-chart-2-fill',
+      to: '/analyzes/datalens/abc-xyz',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
       title: 'RFM',
       icon: 'ri-pie-chart-line',
       to: '/analyzes/rfm',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'DataLens RFM',
+      icon: 'ri-bar-chart-2-fill',
+      to: '/analyzes/datalens/rfm',
     }"
   />
   <VerticalNavLink
