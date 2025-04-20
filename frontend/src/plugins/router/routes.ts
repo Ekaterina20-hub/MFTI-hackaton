@@ -9,8 +9,20 @@ export const routes = [
         component: () => import('@/pages/dashboard.vue'),
       },
       {
+        path: 'analyzes/datalens/general',
+        component: () => import('@/pages/analyzes/datalens/general.vue'),
+      },
+      {
         path: 'analyzes/abc-xyz',
         component: () => import('@/pages/analyzes/abc-xyz.vue'),
+      },
+      {
+        path: 'analyzes/datalens/xyz',
+        component: () => import('@/pages/analyzes/datalens/xyz.vue'),
+      },
+      {
+        path: 'analyzes/datalens/abc',
+        component: () => import('@/pages/analyzes/datalens/abc.vue'),
       },
       {
         path: 'analyzes/rfm',

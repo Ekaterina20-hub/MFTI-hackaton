@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import cohort1 from '@images/cohort/cohort1.png';
 
 </script>
 
 <template>
-  <VCard class="position-relative" title="Когортный анализ">
+  <VCard class="position-relative" title="ABC анализ">
     <VCardText style="flex: 1;">
-      <VImg
-        :src="cohort1"
-      />
+      <iframe frameborder="0" src="https://datalens.yandex/r1d28hv05jhqd?_embedded=1&_no_controls=1" width="100%" height="400px"></iframe>
     </VCardText>
 
     <!-- Trophy -->

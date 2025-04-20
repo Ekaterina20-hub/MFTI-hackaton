@@ -13,11 +13,18 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       icon: 'ri-home-smile-line',
     }"
   > -->
-    <VerticalNavLink
+  <VerticalNavLink
       :item="{
         title: 'Общая аналитика',
         icon: 'ri-bar-chart-box-line',
         to: '/',
+      }"
+    />
+    <VerticalNavLink
+      :item="{
+        title: 'DataLens общий',
+        icon: 'ri-bar-chart-box-fill',
+        to: '/analyzes/datalens/general',
       }"
     />
   <!-- <VerticalNavLink
@@ -50,6 +57,20 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
       title: 'ABC+XYZ',
       icon: 'ri-bar-chart-2-line',
       to: '/analyzes/abc-xyz',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'DataLens ABC',
+      icon: 'ri-bar-chart-fill',
+      to: '/analyzes/datalens/abc',
+    }"
+  />
+  <VerticalNavLink
+    :item="{
+      title: 'DataLens XYZ',
+      icon: 'ri-bar-chart-2-fill',
+      to: '/analyzes/datalens/xyz',
     }"
   />
   <VerticalNavLink
