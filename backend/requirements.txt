@@ -12,3 +12,6 @@ easy-thumbnails
 # django-modeladmin-reorder
 # django-allauth
 # django-rest-allauth
+pandas==2.0.3
+catboost==1.2.7
+numpy==1.24.3
