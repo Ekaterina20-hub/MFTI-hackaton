@@ -47,13 +47,13 @@ def interval_days_needed(start_date, end_date):
     if days <= 3:
         return 1
     if days > 3 and days <= 7:
-        return 2
-        # return 3
+        # return 2
+        return 3
     elif days > 7 and days <= 30:
-        return 4
-        # return 7
-    return 6
-    # return 15
+        # return 4
+        return 7
+    # return 6
+    return 15
 
 def get_timeline_days(dates):
     global TIMELINE_FINISH_DATE
@@ -130,8 +130,9 @@ for customer in customers:
     order_dates = list(set(orders_df['date_created'].to_list()))
     order_dates.sort()
     timeline_dates = get_timeline_days(order_dates)
-    if TIMELINE_FINISH_DATE not in timeline_dates and len(timeline_dates):
-        timeline_dates.append(TIMELINE_FINISH_DATE)
+    # print(timeline_dates)
+    # if TIMELINE_FINISH_DATE not in timeline_dates and len(timeline_dates):
+    #     timeline_dates.append(TIMELINE_FINISH_DATE)
     # timeline_date = timeline_dates[0]
     for timeline_date in timeline_dates:
         timeline_item = {}
@@ -148,12 +149,14 @@ for customer in customers:
             print(orders_df['date_created'])
             print(orders_df)
             print(timeline_date)
+            continue
             raise Exception('Мы не могли оказаться до ордера и без. Это ошибка.')
         timeline_item['days_after_order'] = (timeline_date - last_previos_order['date_created']).days
         timeline_item['city_center_distance_km'] = last_previos_order['city_center_distance_km']
         timeline_item['city_center_level'] = last_previos_order['city_center_level']
         timeline_item['last_delivery_distance_km'] = last_previos_order['delivery_distance_km']
         timeline_item['last_delivery_delay_days'] = last_previos_order['delivery_delay']
+        timeline_item['last_delivery_actual_days'] = last_previos_order['actual_delivery_days']
         timeline_item['last_delivery_cost'] = last_previos_order['delivery_cost']
         timeline_item['last_order_cost'] = last_previos_order['order_cost']
         timeline_item['last_cancelled'] = last_previos_order['is_cancelled']
@@ -188,9 +191,6 @@ for customer in customers:
         timeline_item['is_customer_will_order'] = next_order is not None and next_order.any()
 
         # 9. Получаем последний отзыв до текущей даты, если есть и извлекаем все доступные данные
-        # TODO: честно говоря возможно стоило бы смотреть на дату отзыва, если он привязан к этому ордеры. А так нам придётся надеятся на random.
-        # Хм, так может нам тогда брать ревьювы не по дате, а по идентификатору ордера?
-        # TODO: подумать над этим
         # Давай пока не по дате фильтровать отзывы, а по ордеру
         last_review = get_last_order_review(reviews_df, last_previos_order['order_id'])
         timeline_item['last_review_score'] = last_review['score'] if last_review is not None and last_review.any() else None
@@ -207,7 +207,7 @@ for customer in customers:
         # 10. Вставляем запись в БД
         insert_df = pd.DataFrame([timeline_item])
         # print(timeline_item)
-        insert_df.to_sql('customer_features_timeline', database, if_exists='append', index=False)
+        insert_df.to_sql('customer_features_timeline2', database, if_exists='append', index=False)
     customer_index += 1
     if not customer_index % 10:
         print('Завершено: ', round(100*customer_index/len(customers), 2), '%')
