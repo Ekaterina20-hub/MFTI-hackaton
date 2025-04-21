@@ -61,6 +61,10 @@ export const routes = [
         component: () => import('@/pages/ml-models/time-machine.vue'),
       },
       {
+        path: 'ml-models/recall-precision-balance',
+        component: () => import('@/pages/ml-models/recall-precision-balance.vue'),
+      },
+      {
         path: 'customers',
         component: () => import('@/pages/customers/index.vue'),
       },
