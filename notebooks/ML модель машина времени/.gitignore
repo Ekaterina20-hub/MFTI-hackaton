@@ -16,5 +16,4 @@
 messages.csv
 backup.log
 *шлак/*
-*ml-models/*
 *catboost_info/*
