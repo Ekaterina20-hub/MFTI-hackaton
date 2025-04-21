@@ -23,11 +23,17 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
+from rest_framework.decorators import action
 from rest_framework.decorators import api_view, renderer_classes, permission_classes
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
-
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+
+from api.services.machine_learning import get_customer_xdata
+from api.services.machine_learning import normalize_customer_xdata
+from api.services.machine_learning import load_ml_model
+from api.services.machine_learning import get_predict_interpretation
+from api.services.machine_learning import get_xdata_properties
 
 from django.contrib.auth import authenticate, get_user_model
 User = get_user_model()
@@ -65,6 +71,30 @@ class SearchCustomerViewSet(ModelViewSet):
         serializer = api_serializers.CustomerSerializer(page, many=True)
 
         return self.get_paginated_response(serializer.data)
+    
+    @action(methods=['get'], detail=True)
+    def predict(self, request, pk=None, *args, **kwargs):
+        сustomer = Customer.objects.get(pk=pk)
+        xdata = get_customer_xdata(сustomer.customer_unique_id)
+        mlmodels = MLModel.objects.filter(is_active=True).all()
+        
+        predicts = []
+        for mlmodel in mlmodels:
+            df_X = normalize_customer_xdata(mlmodel, xdata)
+            mlmodel_worker = load_ml_model(mlmodel.model_file)
+            proba = mlmodel_worker.predict_proba(df_X)[:, 1]
+            interpretations = get_predict_interpretation(mlmodel_worker, df_X)
+            predicts.append({
+                'mlmodel': api_serializers.MLModelLightSerializer(mlmodel, many=False).data,
+                'proba': proba,
+                'interpretations': interpretations
+            })
+        x_items = df_X.to_dict('records')
+        properties = get_xdata_properties(x_items[0]) if len(x_items) else []
+        return Response({
+            'properties': properties,
+            'predicts': predicts
+        }, status=HTTP_200_OK)
 
 
 class SearchProductViewSet(ModelViewSet):

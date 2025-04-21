@@ -185,6 +185,7 @@ class CustomerFeaturesCurrent(models.Model):
         db_table = 'customer_features_current'
         managed = False
 
+
 class CustomerAbcAnalysis(models.Model):
     customer_unique_id = models.CharField(
         max_length=255, 

@@ -46,11 +46,12 @@ class CustomerAbcAnalysisSerializer(serializers.ModelSerializer):
 class CustomerDetailSerializer(CustomerSerializer):
     abc_analysis = serializers.SerializerMethodField(read_only=True)
     products = serializers.SerializerMethodField(read_only=True)
+    reviews = serializers.SerializerMethodField(read_only=True)
     
     def get_abc_analysis(self, obj):
         abc = CustomerAbcAnalysis.objects.filter(customer_unique_id=obj.customer_unique_id.hex).first()
         return CustomerAbcAnalysisSerializer(abc, many=False).data
-    
+
     def get_products(self, obj):
         products_dict = runQuery(f'''
 select oi.product_id from orders_items_clear oi 
@@ -62,10 +63,15 @@ where c.customer_unique_id='{obj.customer_unique_id.hex}'
         products = Product.objects.filter(product_id__in = product_ids).all()
         return ProductSerializer(products, many=True).data
 
+    def get_reviews(self, obj):
+        reviews = Review.objects.filter(customer_unique_id=obj.customer_unique_id).all()
+        return ReviewLightSerializer(reviews, many=True).data
+
     class Meta(CustomerSerializer.Meta):
         fields = CustomerSerializer.Meta.fields + (
             'abc_analysis',
             'products',
+            'reviews',
         )
 
 
@@ -120,6 +126,23 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
 
 
+class ReviewLightSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Review
+        fields = (
+            'review_id',
+            'order_id',
+            'score',
+            'message',
+            'message_ru',
+            'creation_date',
+            'q2',
+            'q6',
+            'customer_unique_id',
+        )
+
+
 class MLModelSerializer(serializers.ModelSerializer):
     
     metrics_offset = serializers.SerializerMethodField(read_only=True)
@@ -144,3 +167,18 @@ class MLModelSerializer(serializers.ModelSerializer):
             'is_main',
         )
 
+
+class MLModelLightSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MLModel
+        fields = (
+            'name',
+            # 'feature_columns',
+            'precision_true',
+            'recall_true',
+            'f1_true',
+            'precision_false',
+            'is_active',
+            'is_main',
+        )
