@@ -29,7 +29,7 @@ const newProject = {
 <template>
   <VRow class="match-height">
 
-    <VCol cols="12" md="12">
+    <!-- <VCol cols="12" md="12">
       <VAlert color="success"
         title="Что готово на 14.04.2025:"
         icon="ri-alert-fill"
@@ -94,7 +94,7 @@ const newProject = {
         </VBtn>, 
 
       </VAlert>
-    </VCol>
+    </VCol> -->
 
 
     <!-- 3 -->
