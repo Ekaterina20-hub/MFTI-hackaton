@@ -1,6 +1,10 @@
 <script lang="ts" setup>
+import CustomerAbout from '@/components/customers/CustomerAbout.vue';
+import PredictionCard from '@/components/customers/PredictionCard.vue';
+import ReviewItem from '@/components/reviews/ReviewItem.vue';
 import { useApi } from '@/composables/useApi';
-import AccountSettingsAccount from '@/views/pages/account-settings/AccountSettingsAccount.vue';
+import ProductsTable from '@/views/customers/ProductsTable.vue';
+import avatar1 from '@images/avatars/avatar-1.png';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
@@ -14,6 +18,7 @@ const customerProfile = ref<any|null>(null)
 const customerId = ref<number|null>($route.params.id ? Number($route.params.id) : null)
 const MLModels = ref<Array<any>|null>(null)
 const mainMLModel = ref<any|null>(null)
+const predictsData = ref<any|null>(null)
 
 // tabs
 const tabs = [
@@ -29,6 +34,7 @@ const loadData = () => {
   // }
   $api.get(`/api/customers/${customerId.value}/`)
     .then(response => {
+      response.data.photo = avatar1
       customerProfile.value = response.data
       isLoading.value = false
     })
@@ -37,6 +43,11 @@ const loadData = () => {
       MLModels.value = response.data
       mainMLModel.value = MLModels.value?.find(x => x.is_main)
     })
+  $api.get(`/api/customers/${customerId.value}/predict`)
+    .then(response => {
+      predictsData.value = response.data
+    })
+
 }
 
   onMounted(() => {
@@ -46,46 +57,30 @@ const loadData = () => {
 </script>
 
 <template>
-  <div>
-    
-    <AccountSettingsAccount :customerProfile="customerProfile" />
 
-    <!-- <VTabs
-      v-model="activeTab"
-      show-arrows
-      class="v-tabs-pill"
-    >
-      <VTab
-        v-for="item in tabs"
-        :key="item.icon"
-        :value="item.tab"
-      >
-        <VIcon
-          size="20"
-          start
-          :icon="item.icon"
+  <CustomerAbout :customerProfile="customerProfile" />
+
+  <PredictionCard v-if="predictsData" :predictsData="predictsData" class="mb-6" />
+
+  <VCard title="Купленные товары:" class="mb-6">
+    <ProductsTable
+      :current-page="1"
+      :services-data="customerProfile?.products"
+      :is-loading="isLoading"
+    />
+  </VCard>
+
+  <VCard title="Отзывы покупателя:" class="mb-6">
+    <VCardText v-if="customerProfile">
+      <VList class="card-list d-flex flex-wrap">
+        <ReviewItem v-for="review in customerProfile.reviews"
+          :key="review.review_id"
+          :review="review"
+          :default-customer="customerProfile"
+          style="max-width: 500px; min-width: 50%;"
         />
-        {{ item.title }}
-      </VTab>
-    </VTabs>
+      </VList>
+    </VCardText>
+  </VCard>
 
-    
-    <VWindow
-      v-model="activeTab"
-      class="mt-5 disable-tab-transition"
-      :touch="false"
-    >
-      <VWindowItem value="account">
-        <AccountSettingsAccount :customerProfile="customerProfile" />
-      </VWindowItem>
-
-      <VWindowItem value="security">
-        <AccountSettingsSecurity :customerProfile="customerProfile" />
-      </VWindowItem>
-
-      <VWindowItem value="notification">
-        <AccountSettingsNotification :customerProfile="customerProfile" />
-      </VWindowItem>
-    </VWindow> -->
-  </div>
 </template>

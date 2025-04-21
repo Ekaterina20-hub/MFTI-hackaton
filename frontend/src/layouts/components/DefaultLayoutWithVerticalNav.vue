@@ -31,9 +31,9 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
             <!-- <VListItemMedia>
                 <VIcon icon="ri-menu-line" />
             </VListItemMedia> -->
-            <VListItemTitle><span class="inline-desktop">Текущая дата: </span>01.05.2018</VListItemTitle>
+            <VListItemTitle><span class="inline-desktop">Текущая дата: </span>01.08.2018</VListItemTitle>
             <VListItemSubtitle class="inline-desktop">
-              Данные заканчиваются 31.07.2018. Для наглядности прогнозирования мы выбрали дату на 3 месяца раньше как текущую.
+              После 31.07.2018 происходит резкий, но не мгновенный обвал заказов.
               <RouterLink to="/about/dataset">Подробнее...</RouterLink>
             </VListItemSubtitle>
           </VListItem>

@@ -1,62 +1,53 @@
 <template>
-      <v-row>
-        <v-col cols="12" md="6">
-          <div class="chart-container">
-            <VueApexCharts
-              type="radialBar"
-              height="300"
-              :options="chartOptions"
-              :series="series"
-            />
-          </div>
-        </v-col>
+  <v-row>
+    <v-col cols="12" md="6">
+      <div class="chart-container">
+        <VueApexCharts
+          type="radialBar"
+          height="300"
+          :options="chartOptions"
+          :series="series"
+        />
+      </div>
+    </v-col>
 
-        <v-col cols="12" md="6">
-          <v-list>
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon :color="categoryColor">mdi-label</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>Категория</v-list-item-title>
-                <v-list-item-subtitle>
-                  <v-chip :color="categoryColor" dark>
-                    {{ abcAnalysis.category }}
-                  </v-chip>
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+    <v-col cols="12" md="6">
+      <v-list>
+        <v-list-item prepend-icon="ri-bar-chart-box-line">
+          <v-list-item-content>
+            <v-list-item-title>Категория</v-list-item-title>
+            <v-list-item-subtitle>
+              <v-chip :color="categoryColor" dark>
+                {{ abcAnalysis.category }}
+              </v-chip>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
 
-            <v-divider></v-divider>
+        <v-divider></v-divider>
 
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="blue">mdi-cash</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>Сумма покупок</v-list-item-title>
-                <v-list-item-subtitle class="text-h6">
-                  {{ formatCurrency(abcAnalysis.sum) }}
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+        <v-list-item prepend-icon="ri-cash-line">
+          <v-list-item-content>
+            <v-list-item-title>Сумма покупок</v-list-item-title>
+            <v-list-item-subtitle class="text-h6">
+              {{ formatCurrency(abcAnalysis.sum) }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
 
-            <v-divider></v-divider>
+        <v-divider></v-divider>
 
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon color="green">mdi-chart-line</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>Доля в общем доходе</v-list-item-title>
-                <v-list-item-subtitle class="text-h6">
-                  {{ abcAnalysis.cumulative_percentage }}%
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-col>
-      </v-row>
+        <v-list-item prepend-icon="ri-bar-chart-fill">
+          <v-list-item-content>
+            <v-list-item-title>Доля в общем доходе</v-list-item-title>
+            <v-list-item-subtitle class="text-h6">
+              {{ abcAnalysis.cumulative_percentage }}%
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">
@@ -76,9 +67,9 @@ const props = defineProps<{
 
 const categoryColor = computed(() => {
   switch(props.abcAnalysis.category) {
-    case 'A': return 'red'
-    case 'B': return 'orange'
-    case 'C': return 'green'
+    case 'A': return 'error'
+    case 'B': return 'warning'
+    case 'C': return 'yellow'
     default: return 'grey'
   }
 })

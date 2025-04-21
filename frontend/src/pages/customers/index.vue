@@ -156,7 +156,7 @@ import avatar8 from '@images/avatars/avatar-8.png';
       </template>
 
       <template #item.actions="{ item }">
-        <VBtn  icon="ri-edit-2-fill" :to="'/customers/' + item.id" variant="plain" />
+        <VBtn  icon="ri-eye-fill" :to="'/customers/' + item.id" variant="plain" />
       </template>
       <template #bottom>
       </template>

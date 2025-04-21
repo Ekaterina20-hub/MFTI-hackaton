@@ -44,8 +44,9 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
         title: 'Клиенты',
         icon: 'ri-user-line',
         to: '/customers',
-        badgeContent: '-125',
-        badgeClass: 'bg-light-primary text-primary',
+        badgeContent: '!',
+        // badgeContent: '-125',
+        badgeClass: 'bg-light-error text-error',
       }"
     />
   <VerticalNavSectionTitle
