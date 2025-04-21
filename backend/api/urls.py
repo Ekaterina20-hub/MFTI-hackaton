@@ -13,4 +13,5 @@ urlpatterns = [
     path('random/reviews', views.RandomReviewsListView.as_view(), name='list_random_reviews'),
     path('ml-models/list', views.MLModelListView.as_view(), name='list_ml-models'),
     path('ml-models/customers/count', views.getCustomersCount, name='ml-models-customers-count'),
+    path('ml-models/reports/churn-sales', views.churnSalesReport, name='ml-models-reports-churn-sales'),
 ]

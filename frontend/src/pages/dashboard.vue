@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AnalyticsAward from '@/views/dashboard/AnalyticsAward.vue'
-import AnalyticsTransactions from '@/views/dashboard/AnalyticsTransactions.vue'
-import DeliveryCard from '@/views/dashboard/DeliveryCard.vue'
-import ReviewsWidget from '@/views/dashboard/ReviewsWidget.vue'
-
+import AnalyticsAward from '@/views/dashboard/AnalyticsAward.vue';
+import AnalyticsTransactions from '@/views/dashboard/AnalyticsTransactions.vue';
+import DeliveryCard from '@/views/dashboard/DeliveryCard.vue';
+import ReviewsWidget from '@/views/dashboard/ReviewsWidget.vue';
+import SalesForecast from '@/views/dashboard/charts/SalesForecast.vue';
 
 const totalProfit = {
   title: 'Total Profit',
@@ -27,89 +27,34 @@ const newProject = {
 <template>
   <VRow class="match-height">
 
-  <!-- <VCol cols="12" md="12">
-      <VAlert color="success"
-        title="Что готово на 14.04.2025:"
-        icon="ri-alert-fill"
-        closable
-        variant="outlined"
-      >
-        <VBtn variant="text"
-          color="success"
-          prepend-icon="ri-chat-check-fill"  
-          to="/analyzes/abc-xyz"
-        >
-          ABC + XYZ анализы
-        </VBtn>, 
+    <VCol cols="12" md="6">
+      <!-- <CustomerChurn /> -->
+      <SalesForecast
+        title="Оценка ML моделью оттока клиентов"
+        subtitle="История"
+        series-type="line"
+        color="#d367f0aa"
+        report-type="churn"
+      />
+      
 
-        <VBtn variant="text"
-          color="success"
-          prepend-icon="ri-chat-check-fill"  
-          to="/analyzes/rfm"
-          
-        >
-          RFM анализ
-        </VBtn>, 
+    </VCol>
 
-        <VBtn variant="text"
-          color="success"
-          prepend-icon="ri-chat-check-fill"  
-          to="/analyzes/geolocation"
-        >
-          Анализ заказов по геолокации и другим параметрам
-        </VBtn>, 
+    <VCol cols="12" md="6">
+      <SalesForecast
+        title="Прогноз продаж ML моделью"
+        subtitle="История + следующий месяц - август 2018"
+        series-type="column"
+      />
+    </VCol>
 
-        <VBtn variant="text"
-          color="success"
-          prepend-icon="ri-chat-check-fill"  
-          to="/analyzes/cohort"
-        >
-          Всесторонний когортный анализ
-        </VBtn>, 
-
-          <VBtn variant="text"
-            color="success"
-            prepend-icon="ri-chat-check-fill"  
-            to="/analyzes/nlp"
-          >
-            Извлечение признаков из отзывов с помощью LLM
-          </VBtn>, 
-
-          <VBtn variant="text"
-          color="success"
-          prepend-icon="ri-chat-check-fill"  
-            to="/analyzes/k-means"
-          >
-            K means + доп.продажи
-          </VBtn>, 
-
-          <VBtn variant="text"
-            color="primary"
-            prepend-icon="ri-chat-check-fill"  
-            to="/ml-models/time-machine"
-          >
-            Первая версия нашей первой предсказательной модели
-          </VBtn>, 
-
-        </VAlert>
-      </VCol> -->
-
-
-  <!-- 3 -->
-
-  <VCol cols="12" md="6">
-    <DeliveryCard />
-  </VCol>
-
-    <!-- <VCol cols="12" md="4">
-        <AnalyticsTotalEarning />
-      </VCol> -->
+    <VCol cols="12" md="6">
+      <DeliveryCard />
+    </VCol>
 
     <VCol cols="12" md="6">
       <ReviewsWidget />
     </VCol>
-
-    <!-- 3 -->
 
     <VCol cols="12" md="6">
       <AnalyticsAward />
@@ -118,14 +63,6 @@ const newProject = {
     <VCol cols="12" md="6">
       <AnalyticsTransactions />
     </VCol>
-
-    <!-- <VCol cols="12" md="6">
-        <CustomerChurn />
-      </VCol>
-
-      <VCol cols="12" md="6">
-        <SalesForecast />
-      </VCol> -->
 
   </VRow>
 </template>

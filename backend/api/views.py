@@ -34,6 +34,7 @@ from api.services.machine_learning import normalize_customer_xdata
 from api.services.machine_learning import load_ml_model
 from api.services.machine_learning import get_predict_interpretation
 from api.services.machine_learning import get_xdata_properties
+from api.services.reports import churn_sales_report
 
 from django.contrib.auth import authenticate, get_user_model
 User = get_user_model()
@@ -139,3 +140,41 @@ def getCustomersCount(request):
     return Response({
         'count': count,
     }, status=HTTP_200_OK)
+
+
+
+@api_view(('GET',))
+@permission_classes((AllowAny,))
+def churnSalesReport(request):
+    report_type = request.GET.get('type', 'sales')
+    selector_sign = '<' if report_type == 'churn' else '>='
+    if report_type == 'sales':
+        items = churn_sales_report(selector_sign)[-12:]
+    elif report_type == 'churn':
+        result = []
+        items = churn_sales_report(selector_sign)
+
+        # Первый элемент оставляем как есть
+        first_item = {
+            'timeline_month': items[0]['timeline_month'],
+            'customer_count': items[0]['customer_count'],
+            'count_diff': items[0]['customer_count']  # Для первого элемента разница = самому значению
+        }
+        result.append(first_item)
+        for i in range(1, len(items)):
+            # Вычисляем разницу с предыдущим значением
+            difference = items[i]['customer_count'] - items[i-1]['customer_count']
+            
+            # Если разница отрицательная - ставим 0
+            if difference < 0:
+                difference = 0
+            
+            # Создаем новый элемент со всеми полями
+            new_item = {
+                'timeline_month': items[i]['timeline_month'],
+                'customer_count': items[i]['customer_count'],
+                'count_diff': difference
+            }
+            result.append(new_item)
+        items = result[-14:-2]
+    return Response(items, status=HTTP_200_OK)
