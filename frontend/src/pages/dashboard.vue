@@ -27,6 +27,24 @@ const newProject = {
 <template>
   <VRow class="match-height">
 
+    <VCol cols="12" md="12">
+      <VAlert color="success"
+        title="Самое интересное:"
+        icon="ri-alert-fill"
+        closable
+        variant="outlined"
+      >
+        <VBtn variant="text"
+          color="success"
+          prepend-icon="ri-chat-check-fill"  
+          to="/customers/"
+        >
+          Предсказание повторной покупки клиентов
+        </VBtn>
+        <div>+ фильтрация регулируемая по точности или массовости</div>
+      </VAlert>
+    </VCol>
+    
     <VCol cols="12" md="6">
       <!-- <CustomerChurn /> -->
       <SalesForecast

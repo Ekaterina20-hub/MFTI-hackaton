@@ -47,7 +47,6 @@ left join orders o on o.order_id::uuid=cft.order_id
 inner join orders_items oi on oi.order_id =o.order_id
 left join seller_retention_metrics srm on srm.seller_id =oi.seller_id
 left join products p on p.product_id =oi.product_id
-left join product_retention_metrics prm on prm.product_id =oi.product_id
 where cft.customer_unique_id='{customer_unique_id}' and cft.id is not null""")
     return pd.DataFrame(customer_features_current)
 

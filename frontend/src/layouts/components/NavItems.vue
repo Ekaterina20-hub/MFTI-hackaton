@@ -18,9 +18,9 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
     heading: 'ML Модели',
   }" />
   <VerticalNavLink :item="{
-    title: 'Машина времени',
+    title: 'Наши модели',
     icon: 'ri-calendar-schedule-fill',
-    to: '/ml-models/time-machine',
+    to: '/ml-models',
   }" />
   <VerticalNavLink :item="{
     title: 'Клиенты/Прогноз',

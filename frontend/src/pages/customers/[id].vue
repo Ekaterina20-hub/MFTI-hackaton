@@ -60,6 +60,13 @@ const loadData = () => {
 
   <CustomerAbout :customerProfile="customerProfile" />
 
+  <div v-if="!predictsData" class="d-flex my-8 mx-auto">
+    <VProgressCircular
+      indeterminate
+    />
+    <label class="ml-2 mt-1">Загрузка предсказаний модели...</label>
+  </div>
+
   <PredictionCard v-if="predictsData" :predictsData="predictsData" class="mb-6" />
 
   <VCard title="Купленные товары:" class="mb-6">

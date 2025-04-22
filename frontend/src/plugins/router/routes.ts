@@ -87,6 +87,11 @@ export const routes = [
         path: 'analyzes/k-means',
         component: () => import('@/pages/analyzes/k-means.vue'),
       },
+
+      {
+        path: 'ml-models',
+        component: () => import('@/pages/ml-models/index.vue'),
+      },
       {
         path: 'ml-models/time-machine',
         component: () => import('@/pages/ml-models/time-machine.vue'),
@@ -95,6 +100,16 @@ export const routes = [
         path: 'ml-models/recall-precision-balance',
         component: () => import('@/pages/ml-models/recall-precision-balance.vue'),
       },
+
+      {
+        path: 'ml-models/classificaition-customer',
+        component: () => import('@/pages/ml-models/classificaition-customer.vue'),
+      },
+      {
+        path: 'ml-models/classificaition-seller',
+        component: () => import('@/pages/ml-models/classificaition-seller.vue'),
+      },
+
       {
         path: 'customers',
         component: () => import('@/pages/customers/index.vue'),
