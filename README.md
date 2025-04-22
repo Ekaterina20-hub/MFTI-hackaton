@@ -29,7 +29,7 @@
 ---
 ## 📈 Рекомендуемый маршрут знакомства с проектом
 
-flowchart TD
+```flowchart TD
     A[📽 Презентация] --> B[🌐 Сайт проекта]
     B --> C[📊 Дашборды]
     C --> D[📒 Ноутбуки]
@@ -43,7 +43,7 @@ flowchart TD
     click D1 "https://example.com" _blank
     click D2 "nhttps://example.com" _blank
     click D3 "https://example.com" _blank
-
+```
 
 ---
 ## Концепция проекта
