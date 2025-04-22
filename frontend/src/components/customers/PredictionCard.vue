@@ -58,6 +58,7 @@
           :model-value="factor.value * 100"
           height="10"
           rounded
+          :max="factorMaximum"
         ></v-progress-linear>
       </div>
     </v-card-text>
@@ -128,6 +129,13 @@ const activeModel = computed(() => props.predictsData.predicts[0].mlmodel)
 const predictionProbability = computed(() => (props.predictsData.predicts[0].proba[0] * 100).toFixed(1))
 const properties = computed(() => props.predictsData.properties)
 const topFactors = computed(() => props.predictsData.predicts[0].interpretations[0])
+const factorMaximum = computed(() => {
+  if (!topFactors.value || !topFactors.value.length) {
+    return 100
+  }
+  const values = topFactors.value.map(x => Math.floor(100 * x.value))
+  return Math.max(...values)
+})
 
 const formatValue = (value: any) => {
   if (typeof value === 'number') {
