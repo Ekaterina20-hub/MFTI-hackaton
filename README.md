@@ -4,23 +4,14 @@
 
 ## 📈 Рекомендуемый маршрут знакомства с проектом
 
-```mermaid
-flowchart TD
-    A[📽 Презентация] --> B[🌐 Сайт проекта]
-    B --> C[📊 Дашборды]
-    C --> D[📒 Ноутбуки]
-    D --> D1[Анализ]
-    D --> D2[ML-модели классификации]
-    D --> D3[NLP]
+- [📽 Презентация](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/presentation/Презентации%20команды.pptx)
+- [🌐 Сайт проекта](https://goldenmean.pro/)
+- [📊 Дашборды](https://goldenmean.pro/analyzes/datalens/general)
+- [📒 Ноутбуки](https://gitlab.com/mfti6844113/hackaton_2/notebooks)
+  - [Анализ](https://gitlab.com/mfti6844113/hackaton_2/notebooks/analyze)
+  - [ML-модели](https://gitlab.com/mfti6844113/hackaton_2/notebooks/ml-models)
+  - [NLP](https://gitlab.com/mfti6844113/hackaton_2/notebooks/nlp)
 
-    click A "https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/presentation/Презентации%20команды.pptx" _blank
-    click B "https://goldenmean.pro/" _blank
-    click C "https://goldenmean.pro/analyzes/datalens/general" _blank
-    click D1 "https://gitlab.com/mfti6844113/hackaton_2/notebooks"
-    click D1 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/analyze"
-    click D2 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/ml-models"
-    click D3 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/nlp"
-```
 
 ---
 ## 🎯 Цель проекта
