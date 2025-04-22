@@ -274,7 +274,7 @@ GoldenMean/
 | **DecisionTree (балансированная)** | 0.0267 | 0.1791 | 0.0465 | 0.0199 | 0.8744 | 0.500000 |
 
 ## Оценка важности влияния признаков на вероятность оттока
-![Ключевые факторы](https://gitlab.com/mfti6844113/hackaton_2/-/raw/<branch>/notebooks/ML%20модель%20машина%20времени/images/key-factors.png)
+![Ключевые факторы](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/notebooks/ML%20модель%20машина%20времени/images/key-factors.png)
 
 ##🚀 Как запустить
 
