@@ -25,6 +25,26 @@
 | **📊 Data Analyst & BI Developer** | Синикина Анастасия |
 | **📉 Data Analyst & BI Developer** | Емельянова Екатерина |
 
+
+---
+## 📈 Рекомендуемый маршрут знакомства с проектом
+
+flowchart TD
+    A[📽 Презентация] --> B[🌐 Сайт проекта]
+    B --> C[📊 Дашборды]
+    C --> D[📒 Ноутбуки]
+    D --> D1[Анализ]
+    D --> D2[ML-модели классификации]
+    D --> D3[NLP]
+
+    click A "https://example.com/presentation" _blank
+    click B "https://goldenmean.pro/" _blank
+    click C "https://example.com/dashboards" _blank
+    click D1 "https://example.com" _blank
+    click D2 "nhttps://example.com" _blank
+    click D3 "https://example.com" _blank
+
+
 ---
 ## Концепция проекта
 GoldenMean — это аналитическая платформа для прогнозирования оттока клиентов и глубокого анализа розничных продаж. Система объединяет методы машинного обучения (CatBoost, LightGBM, кластеризацию) и бизнес-аналитики (RFM, ABC/XYZ анализ) для выявления клиентов "группы риска" и оптимизации маркетинговых стратегий.
