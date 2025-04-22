@@ -42,8 +42,7 @@
     click C "https://example.com/dashboards" _blank
     click D1 "https://example.com" _blank
     click D2 "nhttps://example.com" _blank
-    click D3 "https://example.com" _blank
-```
+    click D3 "https://example.com" _blank```
 
 ---
 ## Концепция проекта
