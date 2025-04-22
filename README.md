@@ -1,8 +1,28 @@
 # 🟡 Golden Mean
 
-## 🌐 Сайт проекта
-[![Website](https://img.shields.io/badge/GOLDEN_MEAN-Website-%23FFD700?style=flat-square)](https://goldenmean.pro/)
+## 🌐 Сайт проекта - [![Website](https://img.shields.io/badge/GOLDEN_MEAN-Website-%23FFD700?style=flat-square)](https://goldenmean.pro/)
 
+## 📈 Рекомендуемый маршрут знакомства с проектом
+
+```mermaid
+flowchart TD
+    A[📽 Презентация] --> B[🌐 Сайт проекта]
+    B --> C[📊 Дашборды]
+    C --> D[📒 Ноутбуки]
+    D --> D1[Анализ]
+    D --> D2[ML-модели классификации]
+    D --> D3[NLP]
+
+    click A "https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/presentation/Презентации%20команды.pptx" _blank
+    click B "https://goldenmean.pro/" _blank
+    click C "https://goldenmean.pro/analyzes/datalens/general" _blank
+    click D1 "https://gitlab.com/mfti6844113/hackaton_2/notebooks"
+    click D1 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/analyze"
+    click D2 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/ml-models"
+    click D3 "https://gitlab.com/mfti6844113/hackaton_2/notebooks/nlp"
+```
+
+---
 ## 🎯 Цель проекта
 **Golden Mean** — аналитическое приложение для прогнозирования оттока клиентов и анализа розничных продаж. Мы используем передовые методы машинного обучения для создания моделей прогнозирования оттока клиентов и анализа клиентских данных, что позволяет выстраивать стратегии для удержания клиентов и улучшения бизнес-процессов.
 
@@ -25,26 +45,6 @@
 | **📊 Data Analyst & BI Developer** | Синикина Анастасия |
 | **📉 Data Analyst & BI Developer** | Емельянова Екатерина |
 
-
----
-## 📈 Рекомендуемый маршрут знакомства с проектом
-
-```mermaid
-flowchart TD
-    A[📽 Презентация] --> B[🌐 Сайт проекта]
-    B --> C[📊 Дашборды]
-    C --> D[📒 Ноутбуки]
-    D --> D1[Анализ]
-    D --> D2[ML-модели классификации]
-    D --> D3[NLP]
-
-    click A "https://example.com/presentation" _blank
-    click B "https://goldenmean.pro/" _blank
-    click C "https://example.com/dashboards" _blank
-    click D1 "https://example.com" _blank
-    click D2 "nhttps://example.com" _blank
-    click D3 "https://example.com" _blank
-```
 
 ---
 ## Концепция проекта
