@@ -54,6 +54,11 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
     to: '/analyzes/datalens/abc-xyz',
   }" />
   <VerticalNavLink :item="{
+    title: 'DataLens другие',
+    icon: 'ri-bar-chart-2-fill',
+    to: '/analyzes/datalens/many-abc-xyz',
+  }" />
+  <VerticalNavLink :item="{
     title: 'RFM',
     icon: 'ri-pie-chart-line',
     to: '/analyzes/rfm',
@@ -70,8 +75,13 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   }" />
   <VerticalNavLink :item="{
     title: 'Когортный',
-    icon: 'ri-bar-chart-horizontal-fill',
+    icon: 'ri-bar-chart-horizontal-line',
     to: '/analyzes/cohort',
+  }" />
+  <VerticalNavLink :item="{
+    title: 'DTLens Когортный',
+    icon: 'ri-bar-chart-horizontal-fill',
+    to: '/analyzes/datalens/cohort',
   }" />
   <VerticalNavLink :item="{
     title: 'Кластерный',

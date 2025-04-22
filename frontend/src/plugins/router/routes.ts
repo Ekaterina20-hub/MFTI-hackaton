@@ -29,6 +29,33 @@ export const routes = [
         component: () => import('@/pages/analyzes/datalens/abc-xyz.vue'),
       },
       {
+        path: 'analyzes/datalens/many-abc-xyz',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/index.vue'),
+      },
+
+      {
+        path: 'analyzes/datalens/many-abc-xyz/1-xyz-categories',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/1-xyz-categories.vue'),
+      },
+      {
+        path: 'analyzes/datalens/many-abc-xyz/2-abc-xyz-categories',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/2-abc-xyz-categories.vue'),
+      },
+      {
+        path: 'analyzes/datalens/many-abc-xyz/3-abc-customers',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/3-abc-customers.vue'),
+      },
+      {
+        path: 'analyzes/datalens/many-abc-xyz/4-abc-states-customers',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/4-abc-states-customers.vue'),
+      },
+      {
+        path: 'analyzes/datalens/many-abc-xyz/5-abc-states-sellers',
+        component: () => import('@/pages/analyzes/datalens/many-abc-xyz/5-abc-states-sellers.vue'),
+      },
+
+
+      {
         path: 'analyzes/rfm',
         component: () => import('@/pages/analyzes/rfm.vue'),
       },
@@ -43,6 +70,10 @@ export const routes = [
       {
         path: 'analyzes/cohort',
         component: () => import('@/pages/analyzes/cohort.vue'),
+      },
+      {
+        path: 'analyzes/datalens/cohort',
+        component: () => import('@/pages/analyzes/datalens/cohort.vue'),
       },
       {
         path: 'analyzes/nlp',
