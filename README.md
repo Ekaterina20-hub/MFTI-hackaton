@@ -39,7 +39,7 @@
 ---
    
 ## 📁 Исходный датасет
-![Dataset](https://drive.google.com/drive/u/0/folders/1zohZbKWQUCRnRG94arY2MSWITbDc-kMC)
+[Dataset на Google Drive](https://drive.google.com/drive/u/0/folders/1zohZbKWQUCRnRG94arY2MSWITbDc-kMC)
 
 ### 🔍 О датасете
 Датасет содержит информацию о транзакциях электронной коммерции:
@@ -112,7 +112,8 @@
 
 Мы используем SHAP (SHapley Additive exPlanations) для определения вклада каждого признака в конкретное предсказание модели. В отличие от глобальных методов (например, feature_importances), SHAP показывает ***индивидуальное влияние признаков для каждого отдельного клиента***, что позволяет понять, почему модель выдала именно такой прогноз.
 
-![Ключевые факторы](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/notebooks/ML%20модель%20машина%20времени/images/key-factors.png)
+![Ключевые факторы](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/notebooks/ml-models/ML%20модель%20машина%20времени/images/key-factors.png)
+
 
 ## 🚀 Как запустить
 
