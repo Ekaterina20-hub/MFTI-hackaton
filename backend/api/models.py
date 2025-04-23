@@ -25,7 +25,7 @@ class Customer(models.Model):
     sale_orders_ratio = models.FloatField()
     home_seller_ratio = models.FloatField()
     favorite_seller_state_code = models.CharField(max_length=250)
-    # pred_proba = models.FloatField()
+    pred_proba = models.FloatField()
 
     class Meta:
         verbose_name = 'Покупатель'

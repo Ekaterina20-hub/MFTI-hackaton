@@ -67,7 +67,7 @@ class SearchCustomerViewSet(ModelViewSet):
                 .distinct())
             queryset = queryset.filter(customer_unique_id__in=unique_ids)
 
-        queryset = queryset.order_by('-orders_total')
+        queryset = queryset.order_by('-pred_proba')
         page = self.paginate_queryset(queryset)
         serializer = api_serializers.CustomerSerializer(page, many=True)
 
