@@ -4,7 +4,7 @@
 
 ## 📈 Рекомендуемый маршрут знакомства с проектом
 
-- [📽 Презентация](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/presentation/Презентации%20команды.pptx)
+- [📽 Презентация](https://docs.google.com/presentation/d/1G7XxJgZCNdc5kX-Cw0pR-bGRgyf--6P1sDTFgQ9XAYE/edit?usp=sharing)
 - [🌐 Сайт проекта](https://goldenmean.pro/)
 - [📊 Дашборды](https://goldenmean.pro/analyzes/datalens/general)
 - [📒 Ноутбуки](https://gitlab.com/mfti6844113/hackaton_2/-/tree/main/notebooks)

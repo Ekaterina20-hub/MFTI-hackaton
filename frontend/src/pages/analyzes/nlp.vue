@@ -21,6 +21,7 @@ import '@styles/notebooks/jupyter.css';
       <div class="jp-InputArea jp-Cell-inputArea"><div>
       </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">Введение<a class="anchor-link" href="#%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h3><p>Этот ноутбук представляет анализ отзывов клиентов интернет магазина с использованием LLM модели для извлечения ключевых признаков, которые могут помочь в предсказании оттока клиентов.</p>
+<p>Использованная модель: <b>llama-3.2-11b-vision-instruct</b></p>
       </div>
       </div>
       </div>
