@@ -73,6 +73,11 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
     to: '/analyzes/nlp',
   }" />
   <VerticalNavLink :item="{
+    title: 'Кластерный',
+    icon: 'ri-pie-chart-2-line',
+    to: '/analyzes/cluster',
+  }" />
+  <VerticalNavLink :item="{
     title: 'K-means + доп.',
     icon: 'ri-shape-fill',
     to: '/analyzes/k-means',
