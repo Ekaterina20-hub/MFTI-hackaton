@@ -27,45 +27,34 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
     icon: 'ri-user-line',
     to: '/customers',
     badgeContent: '!',
-    // badgeContent: '-125',
     badgeClass: 'bg-light-error text-error',
   }" />
   <VerticalNavSectionTitle :item="{
     heading: 'Анализы',
   }" />
   <VerticalNavLink :item="{
-    title: 'ABC+XYZ',
+    title: 'ABC по категории',
     icon: 'ri-bar-chart-2-line',
-    to: '/analyzes/abc-xyz',
-  }" />
-  <VerticalNavLink :item="{
-    title: 'DataLens ABC',
-    icon: 'ri-bar-chart-fill',
     to: '/analyzes/datalens/abc',
   }" />
   <VerticalNavLink :item="{
-    title: 'DataLens XYZ',
-    icon: 'ri-bar-chart-2-fill',
+    title: 'XYZ по категории',
+    icon: 'ri-pie-chart-line',
     to: '/analyzes/datalens/xyz',
   }" />
   <VerticalNavLink :item="{
-    title: 'DataLens ABCXYZ',
+    title: 'ABC + XYZ',
     icon: 'ri-bar-chart-2-fill',
     to: '/analyzes/datalens/abc-xyz',
   }" />
   <VerticalNavLink :item="{
-    title: 'DataLens другие',
-    icon: 'ri-bar-chart-2-fill',
+    title: 'Другие дашборды',
+    icon: 'ri-bar-chart-fill',
     to: '/analyzes/datalens/many-abc-xyz',
   }" />
   <VerticalNavLink :item="{
-    title: 'RFM',
-    icon: 'ri-pie-chart-line',
-    to: '/analyzes/rfm',
-  }" />
-  <VerticalNavLink :item="{
-    title: 'DataLens RFM',
-    icon: 'ri-bar-chart-2-fill',
+    title: 'RFM покупатели',
+    icon: 'ri-bar-chart-line',
     to: '/analyzes/datalens/rfm',
   }" />
   <VerticalNavLink :item="{
@@ -75,18 +64,8 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue';
   }" />
   <VerticalNavLink :item="{
     title: 'Когортный',
-    icon: 'ri-bar-chart-horizontal-line',
-    to: '/analyzes/cohort',
-  }" />
-  <VerticalNavLink :item="{
-    title: 'DTLens Когортный',
     icon: 'ri-bar-chart-horizontal-fill',
     to: '/analyzes/datalens/cohort',
-  }" />
-  <VerticalNavLink :item="{
-    title: 'Кластерный',
-    icon: 'ri-pie-chart-2-line',
-    to: '/analyzes/cluster',
   }" />
   <VerticalNavLink :item="{
     title: 'NLP Отзывы',

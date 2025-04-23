@@ -55,13 +55,13 @@
     <!-- category -->
     <template #item.abc="{ item }">
       <VChip color="success" class="text-uppercase">
-        A
+        -
       </VChip>
     </template>
 
     <template #item.xyz="{ item }">
       <VChip color="primary" class="text-uppercase">
-        X
+        -
       </VChip>
     </template>
 

@@ -8,17 +8,17 @@
     {
       url: '/ml-models/recall-precision-balance',
       title: 'Ситуативная специализация модели Time Machine',
-      icon: 'ri-calendar-schedule-fill',
+      icon: 'ri-speed-up-fill',
     },
     {
       url: '/ml-models/classificaition-customer',
       title: 'ML модели прогнозирования ухода покупателя',
-      icon: 'ri-calendar-schedule-fill',
+      icon: 'ri-group-fill',
     },
     {
       url: '/ml-models/classificaition-seller',
       title: 'ML модель прогнозирования ухода продавца',
-      icon: 'ri-calendar-schedule-fill',
+      icon: 'ri-shopping-cart-fill',
     },
   ] as Array<any>
 </script>
