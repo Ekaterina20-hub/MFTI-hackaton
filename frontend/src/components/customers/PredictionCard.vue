@@ -2,68 +2,74 @@
   <h2 class="h2 text-center my-8">
     Предсказание повторной покупки с помощью машинного обучения
   </h2>
-  <v-row class="mb-4">
-    <v-col cols="12" md="6">
-      <v-card outlined>
-        <v-card-text class="text-center">
-          <div class="text-h6 mb-2">Вероятность повторной покупки</div>
-          <v-progress-circular
-            :rotate="-90"
-            :size="150"
-            :width="15"
-            :model-value="predictionProbability"
-            color="primary"
-            class="mb-2"
-          >
-            <span class="text-h4">{{ predictionProbability }}%</span>
-          </v-progress-circular>
-          <div class="text-caption">Модель: {{ activeModel.name }}</div>
-        </v-card-text>
-      </v-card>
-    </v-col>
 
-    <v-col cols="12" md="6">
-      <v-card outlined>
-        <v-card-text>
-          <div class="text-h6 mb-3">Метрики модели</div>
-          <VChip label color="success" class="mr-2">
-            Recall: {{ activeModel.recall_true }}%
-          </VChip>
-          <v-chip label color="primary" class="mr-2">
-            Precision: {{ activeModel.precision_true }}%
-          </v-chip>
-          <v-chip label color="warning" class="mr-2">
-            F1: {{ activeModel.f1_true }}%
-          </v-chip>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+  <template  v-for="predict in predictsData.predicts">
+    <v-row class="mb-4">
+      <v-col cols="12" md="6">
+        <v-card outlined>
+          <v-card-text class="text-center">
+            <div class="text-h6 mb-2">Вероятность повторной покупки</div>
+            <v-progress-circular
+              :rotate="-90"
+              :size="150"
+              :width="15"
+              :model-value="predictionProbability(predict)"
+              color="primary"
+              class="mb-2"
+            >
+              <span class="text-h4">{{ predictionProbability(predict) }}%</span>
+            </v-progress-circular>
+            <div class="text-caption">Модель: {{ predict.mlmodel.name }}</div>
+          </v-card-text>
+        </v-card>
+      </v-col>
 
-  <!-- Факторы влияния -->
-  <v-card outlined class="mb-4">
-    <v-card-title>
-      Ключевые факторы влияния
-      <div class="text-sm text-disabled">
-        * Значимость факторов может превышать 100%, так как SHAP анализ показывает вклад в логарифм шансов, а не в вероятность.
-      </div>
-    </v-card-title>
-    <v-card-text>
-      <div v-for="(factor, index) in topFactors" :key="index" class="mb-3">
-        <div class="d-flex justify-space-between mb-1">
-          <span>{{ factor.name }}</span>
-          <span>{{ (factor.value * 100).toFixed(1) }}%</span>
+      <v-col cols="12" md="6">
+        <v-card outlined>
+          <v-card-text>
+            <div class="text-h6 mb-3">Метрики модели</div>
+            <VChip label color="success" class="mr-2">
+              Recall: {{ predict.mlmodel.recall_true }}%
+            </VChip>
+            <v-chip label color="primary" class="mr-2">
+              Precision: {{ predict.mlmodel.precision_true }}%
+            </v-chip>
+            <v-chip label color="warning" class="mr-2">
+              F1: {{ predict.mlmodel.f1_true }}%
+            </v-chip>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <!-- Факторы влияния -->
+    <v-card outlined class="mb-4">
+      <v-card-title>
+        Ключевые факторы влияния
+        <div class="text-sm text-disabled">
+          * Значимость факторов может превышать 100%, так как SHAP анализ показывает вклад в логарифм шансов, а не в вероятность.
         </div>
-        <v-progress-linear
-          :model-value="factor.value * 100"
-          height="10"
-          rounded
-          :max="factorMaximum"
-        ></v-progress-linear>
-      </div>
-    </v-card-text>
-  </v-card>
+      </v-card-title>
+      <v-card-text>
+        <div v-for="(factor, index) in topFactors(predict)" :key="index" class="mb-3">
+          <div class="d-flex justify-space-between mb-1">
+            <span>{{ factor.name }}</span>
+            <span>{{ (factor.value * 100).toFixed(1) }}%</span>
+          </div>
+          <v-progress-linear
+            :model-value="factor.value * 100"
+            height="10"
+            rounded
+            color="primary"
+            :max="factorMaximum(predict)"
+          ></v-progress-linear>
+        </div>
+      </v-card-text>
+    </v-card>
+    <VDivider class="my-8" />
 
+  </template>
+  
   <!-- Все свойства -->
   <v-expansion-panels class="mb-4">
     <v-expansion-panel title="Все параметры клиента, используемые в предсказании">
@@ -125,16 +131,18 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const activeModel = computed(() => props.predictsData.predicts[0].mlmodel)
-const predictionProbability = computed(() => (props.predictsData.predicts[0].proba[0] * 100).toFixed(1))
 const properties = computed(() => props.predictsData.properties)
-const topFactors = computed(() => props.predictsData.predicts[0].interpretations[0])
-const factorMaximum = computed(() => {
-  if (!topFactors.value || !topFactors.value.length) {
+const topFactors = computed(() => (predict: any) => predict.interpretations[0])
+const factorMaximum = computed(() => (predict: any) => {
+  if (!topFactors.value || !topFactors.value(predict).length) {
     return 100
   }
-  const values = topFactors.value.map(x => Math.floor(100 * x.value))
+  const values = topFactors.value(predict).map((x: any) => Math.floor(100 * x.value))
   return Math.max(...values)
+})
+
+const predictionProbability = computed(() => (predict: any) => {
+  return (predict.proba[0] * 100).toFixed(1)
 })
 
 const formatValue = (value: any) => {

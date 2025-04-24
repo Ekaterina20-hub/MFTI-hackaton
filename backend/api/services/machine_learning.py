@@ -31,7 +31,8 @@ MODELS_FEATURES_TRANSLATION = {
     'order_date_variance': 'Дисперсия продаж у продавца',
     'product_name_lenght': 'Длина названия последнего купленного продукта',
     'product_description_lenght': 'Длина описания последнего купленного продукта',
-    'product_photos_qty': 'Количество фотографий у последнего купленного продукта'
+    'product_photos_qty': 'Количество фотографий у последнего купленного продукта',
+    'previos_orders_count': 'Количество ордеров в прошлом'
 }
 
 def get_customer_xdata(customer_unique_id):
@@ -64,7 +65,9 @@ def load_ml_model(filename):
 
 def get_predict_interpretation(model: CatBoostClassifier, X: pd.DataFrame):
 
-    sample_pool = Pool(X, cat_features=['main_payment_type'])
+    cat_features=['main_payment_type', 'customer_state']
+    cat_features = [col for col in cat_features if col in X.columns]
+    sample_pool = Pool(X, cat_features=cat_features)
 
     # Получаем SHAP-значения (последний столбец — это base value)
     shap_values = model.get_feature_importance(
