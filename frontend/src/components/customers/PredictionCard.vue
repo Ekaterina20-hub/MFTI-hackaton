@@ -53,7 +53,10 @@
       <v-card-text>
         <div v-for="(factor, index) in topFactors(predict)" :key="index" class="mb-3">
           <div class="d-flex justify-space-between mb-1">
-            <span>{{ factor.name }}</span>
+            <span>
+              {{ factor.name }}
+              <span v-if="factor.property_value">({{ factor.property_value }})</span>
+            </span>
             <span>{{ (factor.value * 100).toFixed(1) }}%</span>
           </div>
           <v-progress-linear
@@ -132,7 +135,13 @@ interface Props {
 const props = defineProps<Props>()
 
 const properties = computed(() => props.predictsData.properties)
-const topFactors = computed(() => (predict: any) => predict.interpretations[0])
+const topFactors = computed(() => (predict: any) => {
+  const factors = predict.interpretations[0]
+  factors.forEach((factor: any) => {
+    factor.property_value = properties.value.find(x => x.key == factor.key)?.value
+  })
+  return factors
+})
 const factorMaximum = computed(() => (predict: any) => {
   if (!topFactors.value || !topFactors.value(predict).length) {
     return 100

@@ -81,6 +81,7 @@ class SearchCustomerViewSet(ModelViewSet):
         mlmodels = MLModel.objects.filter(is_active=True).all()
         
         predicts = []
+        properties = []
         for mlmodel in mlmodels:
             df_X = normalize_customer_xdata(mlmodel, xdata)
             mlmodel_worker = load_ml_model(mlmodel.model_file)
@@ -91,8 +92,12 @@ class SearchCustomerViewSet(ModelViewSet):
                 'proba': proba,
                 'interpretations': interpretations
             })
-        x_items = df_X.to_dict('records')
-        properties = get_xdata_properties(x_items[0]) if len(x_items) else []
+            x_items = df_X.to_dict('records')
+            if len(x_items):
+                for x_item in x_items:
+                    ps = get_xdata_properties(x_item)
+                    properties.extend(ps)
+        properties = [dict(t) for t in {tuple(d.items()) for d in properties}]
         return Response({
             'properties': properties,
             'predicts': predicts
