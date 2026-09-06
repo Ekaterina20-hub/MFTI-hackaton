@@ -6,7 +6,7 @@
 
 - [📽 Презентация](https://docs.google.com/presentation/d/1G7XxJgZCNdc5kX-Cw0pR-bGRgyf--6P1sDTFgQ9XAYE/edit?usp=sharing)
 - [🌐 Сайт проекта](https://goldenmean.pro/)
-- [📊 Дашборды](https://goldenmean.pro/analyzes/datalens/general)
+- [📊 Дашборды](https://datalens.yandex/nx22qdfa5n429?_share_link=public)
 - [📒 Ноутбуки](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks)
   - [Анализ](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks/analyzes)
   - [ML-модели](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks/ml-models)
