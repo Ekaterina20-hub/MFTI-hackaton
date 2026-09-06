@@ -7,10 +7,10 @@
 - [📽 Презентация](https://docs.google.com/presentation/d/1G7XxJgZCNdc5kX-Cw0pR-bGRgyf--6P1sDTFgQ9XAYE/edit?usp=sharing)
 - [🌐 Сайт проекта](https://goldenmean.pro/)
 - [📊 Дашборды](https://goldenmean.pro/analyzes/datalens/general)
-- [📒 Ноутбуки](https://gitlab.com/mfti6844113/hackaton_2/-/tree/main/notebooks)
-  - [Анализ](https://gitlab.com/mfti6844113/hackaton_2/-/tree/main/notebooks/analyzes)
-  - [ML-модели](https://gitlab.com/mfti6844113/hackaton_2/-/tree/main/notebooks/ml-models)
-  - [NLP](https://gitlab.com/mfti6844113/hackaton_2/-/tree/main/notebooks/nlp)
+- [📒 Ноутбуки](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks)
+  - [Анализ](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks/analyzes)
+  - [ML-модели](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks/ml-models)
+  - [NLP](https://github.com/Ekaterina20-hub/MFTI-hackaton/tree/main/notebooks/nlp)
 
 ---
 
@@ -112,7 +112,7 @@
 
 Мы используем SHAP (SHapley Additive exPlanations) для определения вклада каждого признака в конкретное предсказание модели. В отличие от глобальных методов (например, feature_importances), SHAP показывает ***индивидуальное влияние признаков для каждого отдельного клиента***, что позволяет понять, почему модель выдала именно такой прогноз.
 
-![Ключевые факторы](https://gitlab.com/mfti6844113/hackaton_2/-/raw/main/notebooks/ml-models/ML%20модель%20машина%20времени/images/key-factors.png)
+![Ключевые факторы](https://github.com/Ekaterina20-hub/MFTI-hackaton/blob/main/notebooks/ml-models/ML%20модель%20машина%20времени/images/key-factors.png)
 
 
 ## 🚀 Как запустить
